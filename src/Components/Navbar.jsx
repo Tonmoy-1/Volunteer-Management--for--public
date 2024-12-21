@@ -1,13 +1,12 @@
-import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { FaUserCircle } from "react-icons/fa";
-// import { useAuth } from "../context/AuthContext";  // Uncomment if using authentication context
+import { useContext, useState } from "react";
+import { AuthContext } from "../Provider/AuthProvider";
 
 const Navbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  // const { user, logout } = useAuth();
-  const user = true; // Example, replace with your user context
-
+  const { user, logOut } = useContext(AuthContext);
+  console.log(user);
   return (
     <nav className="bg-[#006F5F] text-white shadow-md">
       <div className="container mx-auto px-6 py-4 flex justify-between items-center">
@@ -53,8 +52,9 @@ const Navbar = () => {
                 onClick={() => setIsDropdownOpen((prev) => !prev)}
                 className="flex items-center space-x-2 focus:outline-none"
               >
-                {user.photoURL ? (
+                {user?.photoURL ? (
                   <img
+                    referrerPolicy="no-referrer"
                     src={user.photoURL}
                     alt={user.displayName || "User"}
                     className="w-8 h-8 rounded-full border-2 border-white"
@@ -85,7 +85,7 @@ const Navbar = () => {
                     Manage My Posts
                   </Link>
                   <button
-                    // onClick={logout}
+                    onClick={logOut}
                     className="block w-full text-left px-4 py-2 text-red-500 hover:bg-red-100"
                   >
                     Logout
@@ -146,7 +146,7 @@ const Navbar = () => {
                   Manage My Posts
                 </Link>
                 <button
-                  // onClick={logout}
+                  onClick={logOut}
                   className="block w-full text-left px-4 py-2 text-red-500 hover:bg-red-100"
                 >
                   Logout

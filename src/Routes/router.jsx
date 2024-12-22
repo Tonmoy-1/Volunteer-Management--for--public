@@ -4,6 +4,7 @@ import Home from "../Pages/Home";
 import Login from "../Authentication/Login";
 import Register from "../Authentication/Register";
 import AddVolunteer from "../Pages/AddVolunteer";
+import VolunteerDetails from "../Pages/VolunteerDetails";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
       {
         path: "/add-volunteer",
         element: <AddVolunteer></AddVolunteer>,
+      },
+      {
+        path: "/volunteer-details/:id",
+        element: <VolunteerDetails></VolunteerDetails>,
       },
     ],
   },

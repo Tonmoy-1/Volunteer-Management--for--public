@@ -1,6 +1,8 @@
+import { Link } from "react-router-dom";
+
 /* eslint-disable react/prop-types */
 const VolunteerCard = ({ singledata }) => {
-  const { category, deadline, postTitle, thumbnailUrl } = singledata;
+  const { category, deadline, postTitle, thumbnailUrl, _id } = singledata;
 
   return (
     <div className="bg-white shadow-lg rounded-lg overflow-hidden ">
@@ -27,9 +29,11 @@ const VolunteerCard = ({ singledata }) => {
         </p>
 
         {/* View Details Button */}
-        <button className="w-full bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition-colors">
-          View Details
-        </button>
+        <Link to={`/volunteer-details/${_id}`}>
+          <button className="w-full bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition-colors">
+            View Details
+          </button>
+        </Link>
       </div>
     </div>
   );

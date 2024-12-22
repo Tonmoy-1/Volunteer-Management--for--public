@@ -300,14 +300,16 @@ const VolunteerDetails = () => {
               >
                 Request
               </button>
-              <button
-                className="btn"
-                onClick={() => document.getElementById("my_modal_4").close()}
-              >
-                Close
-              </button>
             </div>
           </form>
+          <div className="flex justify-end mt-2">
+            <button
+              className="btn btn-warning px-8 "
+              onClick={() => document.getElementById("my_modal_4").close()}
+            >
+              Close
+            </button>
+          </div>
         </div>
       </dialog>
     </div>

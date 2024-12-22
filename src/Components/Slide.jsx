@@ -16,7 +16,7 @@ const Slide = ({ image, text }) => {
           </h1>
           <br />
           <Link
-            to="/all-volunteer"
+            to="/all-volunteers"
             className="px-6 md:px-8 py-3 md:py-4 mt-4 md:mt-6 text-base md:text-lg font-medium text-white bg-blue-600 rounded-lg shadow-md hover:bg-blue-500 focus:ring-4 focus:ring-blue-300 focus:outline-none transition duration-300 ease-in-out transform hover:scale-105"
           >
             Be A Volunteer

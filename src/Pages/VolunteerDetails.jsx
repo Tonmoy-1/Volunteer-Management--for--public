@@ -1,11 +1,14 @@
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { FaCalendarAlt, FaMapMarkerAlt, FaUser } from "react-icons/fa";
 import { useParams } from "react-router-dom";
+import { AuthContext } from "../Provider/AuthProvider";
 
 const VolunteerDetails = () => {
   const [volunteer, setVolunteer] = useState(null);
   const { id } = useParams();
+
+  const { user } = useContext(AuthContext);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -38,7 +41,13 @@ const VolunteerDetails = () => {
     organizerEmail,
     volunteersNeeded,
     thumbnailUrl,
+    category,
   } = volunteer;
+
+  const handleVolunteerRequest = (e) => {
+    e.preventDefault();
+    console.log("data submited");
+  };
 
   return (
     <div className="max-w-6xl mx-auto p-8 bg-gradient-to-r from-blue-50 to-blue-100  rounded-lg mt-10">
@@ -81,11 +90,180 @@ const VolunteerDetails = () => {
               </p>
             </div>
           </div>
-          <button className="mt-10 px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-transform transform hover:scale-105 shadow-md">
+          <button
+            onClick={() => document.getElementById("my_modal_4").showModal()}
+            className="mt-10 px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-transform transform hover:scale-105 shadow-md"
+          >
             Be a Volunteer
           </button>
         </div>
       </div>
+
+      <dialog id="my_modal_4" className="modal">
+        <div className="modal-box w-11/12 max-w-5xl">
+          <h3 className="font-bold text-lg">Volunteer Request Form</h3>
+          <form
+            onSubmit={handleVolunteerRequest}
+            method="dialog"
+            className="space-y-6 mt-4"
+          >
+            <div>
+              <label className="block text-sm font-medium text-gray-700">
+                Thumbnail
+              </label>
+              <input
+                type="text"
+                name="thumbnailUrl"
+                value={thumbnailUrl}
+                readOnly
+                className="w-full border rounded-lg px-4 py-2"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700">
+                Post Title
+              </label>
+              <input
+                type="text"
+                value={postTitle}
+                name="postTitle"
+                readOnly
+                className="w-full border rounded-lg px-4 py-2"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700">
+                Description
+              </label>
+              <textarea
+                value={description}
+                name="description"
+                readOnly
+                className="w-full border rounded-lg px-4 py-2"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700">
+                Category
+              </label>
+              <input
+                type="text"
+                name="category"
+                value={category}
+                readOnly
+                className="w-full border rounded-lg px-4 py-2"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700">
+                Location
+              </label>
+              <input
+                type="text"
+                name="location"
+                value={location}
+                readOnly
+                className="w-full border rounded-lg px-4 py-2"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700">
+                Volunteers Needed
+              </label>
+              <input
+                type="text"
+                value={volunteersNeeded}
+                name="volunteersNeeded"
+                readOnly
+                className="w-full border rounded-lg px-4 py-2"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700">
+                Deadline
+              </label>
+              <input
+                name="deadline"
+                type="text"
+                value={deadline}
+                readOnly
+                className="w-full border rounded-lg px-4 py-2"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700">
+                Organizer
+              </label>
+              <input
+                type="text"
+                name="organizerName"
+                value={organizerName}
+                readOnly
+                className="w-full border rounded-lg px-4 py-2"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700">
+                Organizer Email
+              </label>
+              <input
+                type="text"
+                name="organizerEmail"
+                value={organizerEmail}
+                readOnly
+                className="w-full border rounded-lg px-4 py-2"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700">
+                Volunteer Name
+              </label>
+              <input
+                type="text"
+                name="VolunteerName"
+                value={user?.displayName}
+                readOnly
+                className="w-full border rounded-lg px-4 py-2"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700">
+                Volunteer Email
+              </label>
+              <input
+                type="text"
+                name="VolunteerEmail"
+                value={user?.email}
+                readOnly
+                className="w-full border rounded-lg px-4 py-2"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700">
+                Suggestion
+              </label>
+              <textarea
+                className="w-full border rounded-lg px-4 py-2"
+                placeholder="Your suggestions here..."
+              />
+            </div>
+            <div className="modal-action">
+              <button
+                type="submit"
+                className="btn bg-blue-600 text-white px-6 py-2 rounded-lg"
+              >
+                Request
+              </button>
+              <button
+                className="btn"
+                onClick={() => document.getElementById("my_modal_4").close()}
+              >
+                Close
+              </button>
+            </div>
+          </form>
+        </div>
+      </dialog>
     </div>
   );
 };

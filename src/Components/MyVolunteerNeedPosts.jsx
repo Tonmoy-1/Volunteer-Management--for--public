@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 
-import UpdateData from "./UpdateData";
+import { Link } from "react-router-dom";
 
 const MyVolunteerNeedPosts = () => {
   const [posts, setPosts] = useState([]);
@@ -27,25 +27,6 @@ const MyVolunteerNeedPosts = () => {
   }, [email]);
 
   // data use for update
-  const [post, setPost] = useState(null);
-
-  const handleUpdate = (id) => {
-    document.getElementById("my_modal_4").showModal();
-    const fetchData = async () => {
-      try {
-        const { data } = await axios.get(
-          `${import.meta.env.VITE_API_URL}/volunteer-details/${id}`
-        );
-        setPost(data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchData();
-  };
-
-
-  
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -95,12 +76,11 @@ const MyVolunteerNeedPosts = () => {
                     {post.location}
                   </td>
                   <td className="py-3 px-6 text-center">
-                    <button
-                      onClick={() => handleUpdate(post._id)}
-                      className="bg-green-500 text-white py-2 px-4 rounded-lg hover:bg-green-600 transition-transform transform hover:scale-105"
-                    >
-                      Update
-                    </button>
+                    <Link to={`/update-data/${post._id}`}>
+                      <button className="bg-green-500 text-white py-2 px-4 rounded-lg hover:bg-green-600 transition-transform transform hover:scale-105">
+                        Update
+                      </button>
+                    </Link>
                     <button className="bg-red-500 text-white py-2 px-4 rounded-lg hover:bg-red-600 ml-2 transition-transform transform hover:scale-105">
                       Delete
                     </button>
@@ -111,10 +91,6 @@ const MyVolunteerNeedPosts = () => {
           </table>
         </div>
       )}
-
-      {/* modal */}
-
-      <UpdateData post={post}></UpdateData>
     </div>
   );
 };

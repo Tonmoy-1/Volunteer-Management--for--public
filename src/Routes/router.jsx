@@ -7,6 +7,7 @@ import AddVolunteer from "../Pages/AddVolunteer";
 import VolunteerDetails from "../Pages/VolunteerDetails";
 import AllVolunteers from "../Pages/AllVolunteers";
 import ManageVolunteer from "../Pages/ManageVolunteer";
+import UpdateData from "../Components/UpdateData";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
       {
         path: "/my-volunteer",
         element: <ManageVolunteer></ManageVolunteer>,
+      },
+      {
+        path: "/update-data/:id",
+        element: <UpdateData></UpdateData>,
       },
     ],
   },

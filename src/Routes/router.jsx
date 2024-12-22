@@ -5,6 +5,7 @@ import Login from "../Authentication/Login";
 import Register from "../Authentication/Register";
 import AddVolunteer from "../Pages/AddVolunteer";
 import VolunteerDetails from "../Pages/VolunteerDetails";
+import AllVolunteers from "../Pages/AllVolunteers";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
       {
         path: "/volunteer-details/:id",
         element: <VolunteerDetails></VolunteerDetails>,
+      },
+      {
+        path: "/all-volunteers",
+        element: <AllVolunteers></AllVolunteers>,
       },
     ],
   },

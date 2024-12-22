@@ -26,7 +26,7 @@ const Navbar = () => {
             Home
           </NavLink>
           <NavLink
-            to="/all-posts"
+            to="/all-volunteers"
             className={({ isActive }) =>
               `hover:text-[#FFD700] ${isActive ? "text-[#FFD700]" : ""}`
             }
@@ -70,6 +70,23 @@ const Navbar = () => {
                   <p className="p-2 text-sm border-b hover:bg-gray-100">
                     Hello, {user.displayName || "User"}
                   </p>
+
+                  <div className="md:hidden">
+                    <Link
+                      to="/"
+                      className="block px-4 py-2 hover:bg-gray-100"
+                      onClick={() => setIsDropdownOpen(false)}
+                    >
+                      Home
+                    </Link>
+                    <Link
+                      to="/all-volunteers"
+                      className="block px-4 py-2 hover:bg-gray-100"
+                      onClick={() => setIsDropdownOpen(false)}
+                    >
+                      All Posts
+                    </Link>
+                  </div>
                   <Link
                     to="/add-volunteer"
                     className="block px-4 py-2 hover:bg-gray-100"
@@ -98,7 +115,7 @@ const Navbar = () => {
       </div>
 
       {/* Mobile Version: Nav Links in Dropdown */}
-      <div className="md:hidden flex items-center space-x-4">
+      {/* <div className="md:hidden flex items-center space-x-4">
         <button
           onClick={() => setIsDropdownOpen(!isDropdownOpen)}
           className="text-white p-2"
@@ -115,7 +132,7 @@ const Navbar = () => {
               Home
             </Link>
             <Link
-              to="/all-posts"
+              to="/all-volunteers"
               className="block px-4 py-2 hover:bg-gray-100"
               onClick={() => setIsDropdownOpen(false)}
             >
@@ -155,7 +172,7 @@ const Navbar = () => {
             )}
           </div>
         )}
-      </div>
+      </div> */}
     </nav>
   );
 };

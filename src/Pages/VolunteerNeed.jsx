@@ -1,13 +1,22 @@
 import { useEffect, useState } from "react";
 import VolunteerCard from "../Components/VolunteerCard";
+import axios from "axios";
 
 const VolunteerNeed = () => {
   const [data, seteData] = useState([]);
 
   useEffect(() => {
-    fetch("./fake.json")
-      .then((res) => res.json())
-      .then((data) => seteData(data));
+    const fetchData = async () => {
+      try {
+        const { data } = await axios.get(
+          `${import.meta.env.VITE_API_URL}/limited-volunteers`
+        );
+        seteData(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
   }, []);
 
   return (

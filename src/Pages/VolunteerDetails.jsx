@@ -3,6 +3,7 @@ import { useState, useEffect, useContext } from "react";
 import { FaCalendarAlt, FaMapMarkerAlt, FaUser } from "react-icons/fa";
 import { useParams } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
+import toast from "react-hot-toast";
 
 const VolunteerDetails = () => {
   const [volunteer, setVolunteer] = useState(null);
@@ -42,11 +43,56 @@ const VolunteerDetails = () => {
     volunteersNeeded,
     thumbnailUrl,
     category,
+    _id,
   } = volunteer;
 
-  const handleVolunteerRequest = (e) => {
+  const handleVolunteerRequest = async (e) => {
     e.preventDefault();
     console.log("data submited");
+    const form = e.target;
+    const postTitle = form.postTitle.value;
+    const description = form.description.value;
+    const category = form.category.value;
+    const location = form.location.value;
+    const volunteersNeeded = form.volunteersNeeded.value;
+    const deadline = form.deadline.value;
+    const thumbnailUrl = form.thumbnailUrl.value;
+    const organizerName = form.organizerName.value;
+    const organizerEmail = form.organizerEmail.value;
+    const volunteerName = user?.displayName;
+    const volunteerEmail = user?.email;
+
+    const volunteerPostId = _id;
+
+    const beVoluteerData = {
+      postTitle,
+      description,
+      category,
+      location,
+      volunteersNeeded,
+      thumbnailUrl,
+      deadline,
+      organizerName,
+      organizerEmail,
+      volunteerName,
+      volunteerEmail,
+      volunteerPostId,
+      status: "Requested",
+    };
+
+    console.table({ beVoluteerData });
+
+    try {
+      const { data } = await axios.post(
+        `${import.meta.env.VITE_API_URL}/requested-volunteer`,
+        beVoluteerData
+      );
+      console.log(data);
+      document.getElementById("my_modal_4").close();
+      toast.success("Data Added Successfully");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (

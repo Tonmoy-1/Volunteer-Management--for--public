@@ -1,8 +1,10 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import axios from "axios";
 import { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const MyVolunteerNeedPosts = () => {
   const [posts, setPosts] = useState([]);
@@ -11,22 +13,49 @@ const MyVolunteerNeedPosts = () => {
   const email = user?.email;
 
   useEffect(() => {
-    const fetchVolunteers = async () => {
-      try {
-        const { data } = await axios.get(
-          `${
-            import.meta.env.VITE_API_URL
-          }/myvolunteer-needposts/?email=${email}`
-        );
-        setPosts(data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
     fetchVolunteers();
   }, [email]);
+  const fetchVolunteers = async () => {
+    try {
+      const { data } = await axios.get(
+        `${import.meta.env.VITE_API_URL}/myvolunteer-needposts/?email=${email}`
+      );
+      setPosts(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-  // data use for update
+  // handle delete function
+
+  const handleDelete = async (id) => {
+    try {
+      const result = await Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+      });
+      if (result.isConfirmed) {
+        const { data } = await axios.delete(
+          `${import.meta.env.VITE_API_URL}/myvolunteer-needposts/${id}`
+        );
+
+        Swal.fire({
+          title: "Deleted!",
+          text: "Your file has been deleted.",
+          icon: "success",
+        });
+        console.log(data);
+        fetchVolunteers();
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -81,7 +110,10 @@ const MyVolunteerNeedPosts = () => {
                         Update
                       </button>
                     </Link>
-                    <button className="bg-red-500 text-white py-2 px-4 rounded-lg hover:bg-red-600 ml-2 transition-transform transform hover:scale-105">
+                    <button
+                      onClick={() => handleDelete(post._id)}
+                      className="bg-red-500 text-white py-2 px-4 rounded-lg hover:bg-red-600 ml-2 transition-transform transform hover:scale-105"
+                    >
                       Delete
                     </button>
                   </td>

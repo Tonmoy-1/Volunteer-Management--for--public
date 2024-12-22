@@ -6,7 +6,7 @@ import { AuthContext } from "../Provider/AuthProvider";
 const Navbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const { user, logOut } = useContext(AuthContext);
-  console.log(user);
+
   return (
     <nav className="bg-[#006F5F] text-white shadow-md">
       <div className="container mx-auto px-6 py-4 flex justify-between items-center">
@@ -95,7 +95,7 @@ const Navbar = () => {
                     Add Volunteer Post
                   </Link>
                   <Link
-                    to="/my-posts"
+                    to="/my-volunteer"
                     className="block px-4 py-2 hover:bg-gray-100"
                     onClick={() => setIsDropdownOpen(false)}
                   >

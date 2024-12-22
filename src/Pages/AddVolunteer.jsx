@@ -2,6 +2,8 @@ import { useContext, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { AuthContext } from "../Provider/AuthProvider";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 const AddVolunteer = () => {
   const { user } = useContext(AuthContext);
@@ -12,7 +14,7 @@ const AddVolunteer = () => {
     setDeadline(date);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     //    Get Data Into Form
@@ -40,10 +42,21 @@ const AddVolunteer = () => {
     };
 
     console.table({ newPost });
+
+    try {
+      const { data } = await axios.post(
+        `${import.meta.env.VITE_API_URL}/all-volunteers`,
+        newPost
+      );
+      console.log(data);
+      toast.success("Data Added Successfully");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
-    <div className="max-w-3xl mx-auto p-8 bg-white rounded-lg shadow-xl">
+    <div className="max-w-3xl mx-auto p-8 bg-white rounded-lg ">
       <h2 className="text-3xl font-semibold text-center mb-8">
         Add Volunteer Need Post
       </h2>

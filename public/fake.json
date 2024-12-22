@@ -1,0 +1,112 @@
+[
+  {
+    "category": "Social Service",
+    "deadline": "12/11/2024",
+    "description": "Elit anim et labori",
+    "location": "Non rerum quis eum m",
+    "organizerEmail": "tonmoyhosen767@gmail.com",
+    "organizerName": "tonmoy hosen",
+    "postTitle": "Accusantium proident",
+    "thumbnailUrl": "https://www.pexels.com/photo/group-of-people-holding-hands-3094217/",
+    "volunteersNeeded": "68"
+  },
+  {
+    "category": "Healthcare",
+    "deadline": "01/20/2025",
+    "description": "Culpa voluptas doloremque",
+    "location": "Provident quia rerum",
+    "organizerEmail": "john.doe@example.com",
+    "organizerName": "John Doe",
+    "postTitle": "Healthcare Assistance for Elderly",
+    "thumbnailUrl": "https://www.pexels.com/photo/medical-doctor-and-patient-holding-hands-2290572/",
+    "volunteersNeeded": "50"
+  },
+  {
+    "category": "Education",
+    "deadline": "02/15/2025",
+    "description": "Teaching underprivileged children",
+    "location": "New York, USA",
+    "organizerEmail": "alice.smith@example.com",
+    "organizerName": "Alice Smith",
+    "postTitle": "Volunteer Teachers for Underprivileged Schools",
+    "thumbnailUrl": "https://www.pexels.com/photo/students-learning-in-class-3931746/",
+    "volunteersNeeded": "30"
+  },
+  {
+    "category": "Animal Welfare",
+    "deadline": "03/10/2025",
+    "description": "Rescue and care for stray animals",
+    "location": "Los Angeles, CA",
+    "organizerEmail": "steve.johnson@example.com",
+    "organizerName": "Steve Johnson",
+    "postTitle": "Animal Rescue and Welfare Volunteers",
+    "thumbnailUrl": "https://www.pexels.com/photo/selective-focus-photography-of-dog-in-the-grass-1108098/",
+    "volunteersNeeded": "25"
+  },
+  {
+    "category": "Education",
+    "deadline": "04/01/2025",
+    "description": "Mentoring young students in science and math",
+    "location": "Chicago, IL",
+    "organizerEmail": "elena.white@example.com",
+    "organizerName": "Elena White",
+    "postTitle": "STEM Mentorship Program",
+    "thumbnailUrl": "https://www.pexels.com/photo/group-of-people-in-a-library-5428865/",
+    "volunteersNeeded": "15"
+  },
+  {
+    "category": "Social Service",
+    "deadline": "05/12/2025",
+    "description": "Helping the homeless in local shelters",
+    "location": "San Francisco, CA",
+    "organizerEmail": "bob.martin@example.com",
+    "organizerName": "Bob Martin",
+    "postTitle": "Homeless Shelter Volunteer Program",
+    "thumbnailUrl": "https://www.pexels.com/photo/people-in-a-shelter-3094197/",
+    "volunteersNeeded": "40"
+  },
+  {
+    "category": "Healthcare",
+    "deadline": "06/20/2025",
+    "description": "Assist healthcare workers in a hospital setting",
+    "location": "Dallas, TX",
+    "organizerEmail": "lucas.king@example.com",
+    "organizerName": "Lucas King",
+    "postTitle": "Hospital Volunteer Assistance",
+    "thumbnailUrl": "https://www.pexels.com/photo/photo-of-medical-workers-at-the-hospital-4666757/",
+    "volunteersNeeded": "35"
+  },
+  {
+    "category": "Animal Welfare",
+    "deadline": "07/25/2025",
+    "description": "Support animal shelters and pet adoption events",
+    "location": "Miami, FL",
+    "organizerEmail": "maria.garcia@example.com",
+    "organizerName": "Maria Garcia",
+    "postTitle": "Animal Shelter Volunteer Program",
+    "thumbnailUrl": "https://www.pexels.com/photo/adorable-brown-and-black-dog-2016796/",
+    "volunteersNeeded": "20"
+  },
+  {
+    "category": "Education",
+    "deadline": "08/10/2025",
+    "description": "Teach coding to kids in after-school programs",
+    "location": "Seattle, WA",
+    "organizerEmail": "michael.brown@example.com",
+    "organizerName": "Michael Brown",
+    "postTitle": "Kids Coding Program",
+    "thumbnailUrl": "https://www.pexels.com/photo/photo-of-young-people-learning-to-code-5313347/",
+    "volunteersNeeded": "60"
+  },
+  {
+    "category": "Social Service",
+    "deadline": "09/30/2025",
+    "description": "Organize food banks and help distribute meals",
+    "location": "Boston, MA",
+    "organizerEmail": "lucy.james@example.com",
+    "organizerName": "Lucy James",
+    "postTitle": "Food Bank Volunteer Program",
+    "thumbnailUrl": "https://www.pexels.com/photo/person-holding-food-boxes-6167441/",
+    "volunteersNeeded": "100"
+  }
+]

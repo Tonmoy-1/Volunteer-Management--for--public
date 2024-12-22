@@ -3,6 +3,7 @@ import Main from "../Layout/Main";
 import Home from "../Pages/Home";
 import Login from "../Authentication/Login";
 import Register from "../Authentication/Register";
+import AddVolunteer from "../Pages/AddVolunteer";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register></Register>,
+      },
+      {
+        path: "/add-volunteer",
+        element: <AddVolunteer></AddVolunteer>,
       },
     ],
   },

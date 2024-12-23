@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import VolunteerCard from "../Components/VolunteerCard";
 
 const AllVolunteers = () => {
   const [volunteers, setVolunteers] = useState([]);
@@ -38,33 +38,34 @@ const AllVolunteers = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {volunteers.length > 0 ? (
-          volunteers.map((volunteer) => (
-            <div
-              key={volunteer.id}
-              className="bg-white rounded-lg shadow-lg overflow-hidden border border-gray-200"
-            >
-              <img
-                src={volunteer.thumbnailUrl}
-                alt={volunteer.postTitle}
-                className="w-full h-60 object-cover"
-              />
-              <div className="p-6">
-                <h2 className="text-2xl font-semibold text-blue-800">
-                  {volunteer.postTitle}
-                </h2>
-                <p className="text-gray-600 mt-4 line-clamp-3">
-                  {volunteer.description}
-                </p>
-                <div className="mt-6">
-                  <Link
-                    to={`/volunteer-details/${volunteer._id}`}
-                    className="inline-block bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition"
-                  >
-                    View Details
-                  </Link>
-                </div>
-              </div>
-            </div>
+          volunteers.map((volunteer, index) => (
+            // <div
+            //   key={volunteer.id}
+            //   className="bg-white rounded-lg shadow-lg overflow-hidden border border-gray-200"
+            // >
+            //   <img
+            //     src={volunteer.thumbnailUrl}
+            //     alt={volunteer.postTitle}
+            //     className="w-full h-60 object-cover"
+            //   />
+            //   <div className="p-6">
+            //     <h2 className="text-2xl font-semibold text-blue-800">
+            //       {volunteer.postTitle}
+            //     </h2>
+            //     <p className="text-gray-600 mt-4 line-clamp-3">
+            //       {volunteer.description}
+            //     </p>
+            //     <div className="mt-6">
+            //       <Link
+            //         to={`/volunteer-details/${volunteer._id}`}
+            //         className="inline-block bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition"
+            //       >
+            //         View Details
+            //       </Link>
+            //     </div>
+            //   </div>
+            // </div>
+            <VolunteerCard key={index} singledata={volunteer}></VolunteerCard>
           ))
         ) : (
           <p className="text-center text-xl text-gray-500 col-span-full">

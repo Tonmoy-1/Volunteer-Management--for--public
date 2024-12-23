@@ -1,13 +1,14 @@
 import axios from "axios";
 import { useState, useEffect, useContext } from "react";
 import { FaCalendarAlt, FaMapMarkerAlt, FaUser } from "react-icons/fa";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 import toast from "react-hot-toast";
 
 const VolunteerDetails = () => {
   const [volunteer, setVolunteer] = useState(null);
   const { id } = useParams();
+  const navigate = useNavigate();
 
   const { user } = useContext(AuthContext);
 
@@ -45,6 +46,12 @@ const VolunteerDetails = () => {
     category,
     _id,
   } = volunteer;
+
+  const handleBeVolunteer = () => {
+    if (volunteersNeeded === 0)
+      return toast.error("No Volunteer Needed Right Now");
+    document.getElementById("my_modal_4").showModal();
+  };
 
   const handleVolunteerRequest = async (e) => {
     e.preventDefault();
@@ -86,7 +93,8 @@ const VolunteerDetails = () => {
         beVoluteerData
       );
       document.getElementById("my_modal_4").close();
-      toast.success("Data Added Successfully");
+      toast.success("Sent a Request For Be Volunteer");
+      navigate("/all-volunteers");
     } catch (error) {
       document.getElementById("my_modal_4").close();
       toast.error(error?.response?.data);
@@ -135,7 +143,7 @@ const VolunteerDetails = () => {
             </div>
           </div>
           <button
-            onClick={() => document.getElementById("my_modal_4").showModal()}
+            onClick={handleBeVolunteer}
             className="mt-10 px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-transform transform hover:scale-105 shadow-md"
           >
             Be a Volunteer

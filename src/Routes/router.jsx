@@ -8,11 +8,12 @@ import VolunteerDetails from "../Pages/VolunteerDetails";
 import AllVolunteers from "../Pages/AllVolunteers";
 import ManageVolunteer from "../Pages/ManageVolunteer";
 import UpdateData from "../Components/UpdateData";
+import ErrorPage from "../Pages/ErrorPage";
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
-    // errorElement: <ErrorPage />,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         index: true,

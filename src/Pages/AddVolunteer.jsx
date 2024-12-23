@@ -7,12 +7,7 @@ import toast from "react-hot-toast";
 
 const AddVolunteer = () => {
   const { user } = useContext(AuthContext);
-  const [deadline, setDeadline] = useState(new Date());
-
-  // Handle change for date picker
-  const handleDateChange = (date) => {
-    setDeadline(date);
-  };
+  const [startDate, setStartDate] = useState(new Date());
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -24,7 +19,7 @@ const AddVolunteer = () => {
     const category = form.category.value;
     const location = form.location.value;
     const volunteersNeeded = form.volunteersNeeded.value;
-    const deadline = form.deadline.value;
+    const deadline = startDate;
     const thumbnailUrl = form.thumbnailUrl.value;
     const organizerName = user?.displayName;
     const organizerEmail = user?.email;
@@ -150,8 +145,8 @@ const AddVolunteer = () => {
             Deadline
           </label>
           <DatePicker
-            selected={deadline}
-            onChange={handleDateChange}
+            selected={startDate}
+            onChange={(date) => setStartDate(date)}
             className="mt-2 block w-full text-gray-900 border border-gray-300 rounded-md p-3"
             name="deadline"
             required

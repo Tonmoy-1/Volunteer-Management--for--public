@@ -13,7 +13,6 @@ const UpdateData = () => {
   const [post, setPost] = useState(null);
   const navigate = useNavigate();
   const { id } = useParams();
-  console.log(id);
 
   const handleDateChange = (date) => {
     setNewDeadline(date);
@@ -33,12 +32,11 @@ const UpdateData = () => {
       console.log(error);
     }
   };
-  console.log(post);
 
   const {
     postTitle,
     description,
-    category,
+
     location,
     volunteersNeeded,
     thumbnailUrl,
@@ -144,28 +142,28 @@ const UpdateData = () => {
         </div>
 
         {/* Category */}
-        <div>
-          <label
-            htmlFor="category"
-            className="block text-lg font-semibold text-gray-700"
-          >
-            Category
-          </label>
-          <select
-            id="category"
-            name="category"
-            defaultValue={category}
-            className="mt-2 block w-full rounded-lg border border-gray-300 shadow-sm p-3 focus:ring-blue-500 focus:border-blue-500"
-          >
-            <option value="" disabled>
-              Select a Category
-            </option>
-            <option value="Healthcare">Healthcare</option>
-            <option value="Education">Education</option>
-            <option value="Social Service">Social Service</option>
-            <option value="Animal Welfare">Animal Welfare</option>
-          </select>
-        </div>
+        {post?.category && (
+          <div>
+            <label
+              htmlFor="category"
+              className="block text-lg font-semibold text-gray-700"
+            >
+              Category
+            </label>
+            <select
+              id="category"
+              name="category"
+              defaultValue={post?.category}
+              className="mt-2 block w-full rounded-lg border border-gray-300 shadow-sm p-3 focus:ring-blue-500 focus:border-blue-500"
+            >
+              <option>Select a Category</option>
+              <option value="Healthcare">Healthcare</option>
+              <option value="Education">Education</option>
+              <option value="Social Service">Social Service</option>
+              <option value="Animal Welfare">Animal Welfare</option>
+            </select>
+          </div>
+        )}
 
         {/* Location */}
         <div>

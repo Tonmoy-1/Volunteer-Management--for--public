@@ -2,6 +2,7 @@
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const MyVolunteerRequest = () => {
   const [requests, setRequests] = useState([]);
@@ -24,6 +25,33 @@ const MyVolunteerRequest = () => {
     } catch (error) {
       console.error("Error fetching requests:", error);
       alert("Failed to fetch requests. Please try again later.");
+    }
+  };
+
+  const handleDelete = async (id) => {
+    try {
+      const result = await Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, Cancel it!",
+      });
+      if (result.isConfirmed) {
+        await axios.delete(`${import.meta.env.VITE_API_URL}/my-request/${id}`);
+
+        Swal.fire({
+          title: "Canceled!",
+          text: "Your Request has been Canceled.",
+          icon: "success",
+        });
+
+        fetchData();
+      }
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -101,7 +129,10 @@ const MyVolunteerRequest = () => {
                     </span>
                   </td>
                   <td className="px-4 sm:px-6 py-2 sm:py-4">
-                    <button className="bg-red-500 text-white text-sm sm:text-base px-3 sm:px-4 py-1 sm:py-2 rounded-md hover:bg-red-600">
+                    <button
+                      onClick={() => handleDelete(request._id)}
+                      className="bg-red-500 text-white text-sm sm:text-base px-3 sm:px-4 py-1 sm:py-2 rounded-md hover:bg-red-600"
+                    >
                       Cancel
                     </button>
                   </td>

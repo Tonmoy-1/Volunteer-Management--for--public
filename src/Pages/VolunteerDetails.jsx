@@ -80,18 +80,16 @@ const VolunteerDetails = () => {
       status: "Requested",
     };
 
-    console.table({ beVoluteerData });
-
     try {
-      const { data } = await axios.post(
+      await axios.post(
         `${import.meta.env.VITE_API_URL}/requested-volunteer`,
         beVoluteerData
       );
-      console.log(data);
       document.getElementById("my_modal_4").close();
       toast.success("Data Added Successfully");
     } catch (error) {
-      console.log(error);
+      document.getElementById("my_modal_4").close();
+      toast.error(error?.response?.data);
     }
   };
 

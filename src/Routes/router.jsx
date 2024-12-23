@@ -9,6 +9,7 @@ import AllVolunteers from "../Pages/AllVolunteers";
 import ManageVolunteer from "../Pages/ManageVolunteer";
 import UpdateData from "../Components/UpdateData";
 import ErrorPage from "../Pages/ErrorPage";
+import PrivateRoute from "./PrivetRoute";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -29,11 +30,19 @@ const router = createBrowserRouter([
       },
       {
         path: "/add-volunteer",
-        element: <AddVolunteer></AddVolunteer>,
+        element: (
+          <PrivateRoute>
+            <AddVolunteer></AddVolunteer>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/volunteer-details/:id",
-        element: <VolunteerDetails></VolunteerDetails>,
+        element: (
+          <PrivateRoute>
+            <VolunteerDetails></VolunteerDetails>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/all-volunteers",
@@ -41,7 +50,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/my-volunteer",
-        element: <ManageVolunteer></ManageVolunteer>,
+        element: (
+          <PrivateRoute>
+            <ManageVolunteer></ManageVolunteer>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/update-data/:id",

@@ -19,13 +19,13 @@ const MyVolunteerRequest = () => {
     setLoading(true);
     try {
       const { data } = await axios.get(
-        `${import.meta.env.VITE_API_URL}/my-request/?email=${email}`
+        `${import.meta.env.VITE_API_URL}/my-request/?email=${email}`,
+        { withCredentials: true }
       );
       setRequests(data);
       setLoading(false);
     } catch (error) {
       console.error("Error fetching requests:", error);
-      alert("Failed to fetch requests. Please try again later.");
     }
   };
 

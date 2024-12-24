@@ -10,6 +10,7 @@ import {
 } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import auth from "../Firebase/Firebase";
+import axios from "axios";
 
 export const AuthContext = createContext(null);
 const googleProvider = new GoogleAuthProvider();
@@ -56,7 +57,19 @@ const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
-      setUser(currentUser);
+      if (currentUser?.email) {
+        setUser(currentUser);
+        await axios.post(
+          `${import.meta.env.VITE_API_URL}/jwt`,
+          { email: currentUser.email },
+          { withCredentials: true }
+        );
+      } else {
+        setUser(currentUser);
+        await axios.get(`${import.meta.env.VITE_API_URL}/logout`, {
+          withCredentials: true,
+        });
+      }
       setLoading(false);
     });
     return () => {

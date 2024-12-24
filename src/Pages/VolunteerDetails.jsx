@@ -18,7 +18,8 @@ const VolunteerDetails = () => {
     const fetchData = async () => {
       try {
         const { data } = await axios.get(
-          `${import.meta.env.VITE_API_URL}/volunteer-details/${id}`
+          `${import.meta.env.VITE_API_URL}/volunteer-details/${id}`,
+          { withCredentials: true }
         );
         setVolunteer(data);
         setLoading(false);

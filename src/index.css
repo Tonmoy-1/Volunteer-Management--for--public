@@ -67,3 +67,44 @@
     border: 6px solid turquoise;
   }
 }
+
+/* Responsive Size Adjustments */
+@media (max-width: 640px) {
+  .spinner {
+    width: 6rem;
+    height: 6rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .spinner {
+    width: 8rem;
+    height: 8rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .spinner {
+    width: 10rem;
+    height: 10rem;
+  }
+}
+
+/* dark and light moode */
+html,
+body {
+  @apply bg-white text-gray-900;
+}
+
+html.dark,
+body.dark {
+  @apply bg-gray-900 text-gray-100;
+}
+
+footer {
+  @apply bg-gray-200 text-gray-800;
+}
+
+html.dark footer {
+  @apply bg-gray-800 text-gray-200;
+}

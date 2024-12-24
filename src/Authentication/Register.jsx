@@ -15,6 +15,16 @@ const Register = () => {
     // const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
+
+    if (password.length < 6) {
+      return setError("Password must be at least 6 characters long.");
+    }
+    if (!/[A-Z]/.test(password)) {
+      return setError("Password must contain at least one uppercase letter.");
+    }
+    if (!/[a-z]/.test(password)) {
+      return setError("Password must contain at least one lowercase letter.");
+    }
     try {
       await createUser(email, password);
       toast.success("Registration Successful");
@@ -34,9 +44,9 @@ const Register = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100">
-      <div className="w-full max-w-sm p-8 bg-white shadow-xl rounded-lg">
-        <h2 className="text-3xl font-semibold text-center text-gray-700 mb-6">
+    <div className="flex justify-center py-5 items-center min-h-screen bg-gray-100 dark:bg-gray-800">
+      <div className="w-full max-w-md p-8 bg-white rounded-lg dark:bg-gray-700">
+        <h2 className="text-3xl font-semibold text-center text-gray-700 dark:text-gray-200 mb-6">
           Create Your Account
         </h2>
         {error && <p className="text-red-500 text-center mb-4">{error}</p>}
@@ -45,7 +55,7 @@ const Register = () => {
           <div>
             <label
               htmlFor="name"
-              className="block text-sm font-medium text-gray-600"
+              className="block text-sm font-medium text-gray-600 dark:text-gray-300"
             >
               Full Name
             </label>
@@ -53,7 +63,7 @@ const Register = () => {
               type="text"
               id="name"
               name="name"
-              className="w-full mt-2 p-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full mt-2 p-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-600 dark:border-gray-500 dark:text-gray-100"
               placeholder="Enter your full name"
               required
             />
@@ -62,7 +72,7 @@ const Register = () => {
           <div>
             <label
               htmlFor="email"
-              className="block text-sm font-medium text-gray-600"
+              className="block text-sm font-medium text-gray-600 dark:text-gray-300"
             >
               Email Address
             </label>
@@ -70,7 +80,7 @@ const Register = () => {
               type="email"
               id="email"
               name="email"
-              className="w-full mt-2 p-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full mt-2 p-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-600 dark:border-gray-500 dark:text-gray-100"
               placeholder="Enter your email"
               required
             />
@@ -79,7 +89,7 @@ const Register = () => {
           <div>
             <label
               htmlFor="password"
-              className="block text-sm font-medium text-gray-600"
+              className="block text-sm font-medium text-gray-600 dark:text-gray-300"
             >
               Password
             </label>
@@ -87,7 +97,7 @@ const Register = () => {
               type="password"
               id="password"
               name="password"
-              className="w-full mt-2 p-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full mt-2 p-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-600 dark:border-gray-500 dark:text-gray-100"
               placeholder="Create your password"
               required
             />
@@ -95,7 +105,7 @@ const Register = () => {
 
           <button
             type="submit"
-            className="w-full p-4 mt-6 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none transition"
+            className="w-full p-4 mt-6 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none transition dark:bg-blue-500 dark:hover:bg-blue-600"
           >
             Register
           </button>
@@ -104,15 +114,18 @@ const Register = () => {
         {/* Google Login Button */}
         <button
           onClick={handleGoogleLogin}
-          className="w-full p-4 mt-4 bg-red-600 text-white rounded-md hover:bg-red-700 flex items-center justify-center space-x-2"
+          className="w-full p-4 mt-4 bg-red-600 text-white rounded-md hover:bg-red-700 flex items-center justify-center space-x-2 dark:bg-red-500 dark:hover:bg-red-600"
         >
           <FaGoogle className="text-white" />
           <span>Register with Google</span>
         </button>
 
-        <p className="mt-4 text-center text-sm text-gray-600">
+        <p className="mt-4 text-center text-sm text-gray-600 dark:text-gray-300">
           Already have an account?{" "}
-          <a href="/login" className="text-blue-600 hover:text-blue-700">
+          <a
+            href="/login"
+            className="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-500"
+          >
             Login here
           </a>
         </p>

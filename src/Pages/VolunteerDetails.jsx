@@ -4,11 +4,13 @@ import { FaCalendarAlt, FaMapMarkerAlt, FaUser } from "react-icons/fa";
 import { useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 import toast from "react-hot-toast";
+import Spinner from "../Components/Spiner";
 
 const VolunteerDetails = () => {
   const [volunteer, setVolunteer] = useState(null);
   const { id } = useParams();
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
 
   const { user } = useContext(AuthContext);
 
@@ -19,6 +21,7 @@ const VolunteerDetails = () => {
           `${import.meta.env.VITE_API_URL}/volunteer-details/${id}`
         );
         setVolunteer(data);
+        setLoading(false);
       } catch (error) {
         console.log(error);
       }
@@ -26,10 +29,10 @@ const VolunteerDetails = () => {
     fetchData();
   }, [id]);
 
-  if (!volunteer) {
+  if (loading) {
     return (
       <div className="text-center py-20 text-xl">
-        Loading Volunteer Details...
+        {loading && <Spinner></Spinner>}
       </div>
     );
   }
@@ -102,7 +105,7 @@ const VolunteerDetails = () => {
   };
 
   return (
-    <div className="max-w-6xl mx-auto p-8 bg-gradient-to-r from-blue-50 to-blue-100  rounded-lg mt-10">
+    <div className="max-w-6xl mx-auto p-8 bg-gradient-to-r from-blue-50 to-blue-100 rounded-lg mt-10">
       <div className="flex flex-col md:flex-row md:space-x-12 items-center">
         <img
           src={thumbnailUrl}
@@ -150,17 +153,23 @@ const VolunteerDetails = () => {
           </button>
         </div>
       </div>
+
       {/* modal */}
-      <dialog id="my_modal_4" className="modal">
-        <div className="modal-box w-11/12 max-w-5xl">
-          <h3 className="font-bold text-lg">Volunteer Request Form</h3>
+      <dialog
+        id="my_modal_4"
+        className="modal bg-opacity-80 dark:bg-gray-800 dark:text-white"
+      >
+        <div className="modal-box w-11/12 max-w-5xl bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+          <h3 className="font-bold text-lg text-gray-900 dark:text-white">
+            Volunteer Request Form
+          </h3>
           <form
             onSubmit={handleVolunteerRequest}
             method="dialog"
             className="space-y-6 mt-4"
           >
             <div>
-              <label className="block text-sm font-medium text-gray-700">
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                 Thumbnail
               </label>
               <input
@@ -168,11 +177,11 @@ const VolunteerDetails = () => {
                 name="thumbnailUrl"
                 value={thumbnailUrl}
                 readOnly
-                className="w-full border rounded-lg px-4 py-2"
+                className="w-full border rounded-lg px-4 py-2 bg-gray-100 dark:bg-gray-700 dark:text-gray-300"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700">
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                 Post Title
               </label>
               <input
@@ -180,22 +189,22 @@ const VolunteerDetails = () => {
                 value={postTitle}
                 name="postTitle"
                 readOnly
-                className="w-full border rounded-lg px-4 py-2"
+                className="w-full border rounded-lg px-4 py-2 bg-gray-100 dark:bg-gray-700 dark:text-gray-300"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700">
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                 Description
               </label>
               <textarea
                 value={description}
                 name="description"
                 readOnly
-                className="w-full border rounded-lg px-4 py-2"
+                className="w-full border rounded-lg px-4 py-2 bg-gray-100 dark:bg-gray-700 dark:text-gray-300"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700">
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                 Category
               </label>
               <input
@@ -203,11 +212,11 @@ const VolunteerDetails = () => {
                 name="category"
                 value={category}
                 readOnly
-                className="w-full border rounded-lg px-4 py-2"
+                className="w-full border rounded-lg px-4 py-2 bg-gray-100 dark:bg-gray-700 dark:text-gray-300"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700">
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                 Location
               </label>
               <input
@@ -215,11 +224,11 @@ const VolunteerDetails = () => {
                 name="location"
                 value={location}
                 readOnly
-                className="w-full border rounded-lg px-4 py-2"
+                className="w-full border rounded-lg px-4 py-2 bg-gray-100 dark:bg-gray-700 dark:text-gray-300"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700">
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                 Volunteers Needed
               </label>
               <input
@@ -227,11 +236,11 @@ const VolunteerDetails = () => {
                 value={volunteersNeeded}
                 name="volunteersNeeded"
                 readOnly
-                className="w-full border rounded-lg px-4 py-2"
+                className="w-full border rounded-lg px-4 py-2 bg-gray-100 dark:bg-gray-700 dark:text-gray-300"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700">
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                 Deadline
               </label>
               <input
@@ -239,11 +248,11 @@ const VolunteerDetails = () => {
                 type="text"
                 value={deadline}
                 readOnly
-                className="w-full border rounded-lg px-4 py-2"
+                className="w-full border rounded-lg px-4 py-2 bg-gray-100 dark:bg-gray-700 dark:text-gray-300"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700">
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                 Organizer
               </label>
               <input
@@ -251,11 +260,11 @@ const VolunteerDetails = () => {
                 name="organizerName"
                 value={organizerName}
                 readOnly
-                className="w-full border rounded-lg px-4 py-2"
+                className="w-full border rounded-lg px-4 py-2 bg-gray-100 dark:bg-gray-700 dark:text-gray-300"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700">
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                 Organizer Email
               </label>
               <input
@@ -263,11 +272,11 @@ const VolunteerDetails = () => {
                 name="organizerEmail"
                 value={organizerEmail}
                 readOnly
-                className="w-full border rounded-lg px-4 py-2"
+                className="w-full border rounded-lg px-4 py-2 bg-gray-100 dark:bg-gray-700 dark:text-gray-300"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700">
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                 Volunteer Name
               </label>
               <input
@@ -275,11 +284,11 @@ const VolunteerDetails = () => {
                 name="VolunteerName"
                 value={user?.displayName}
                 readOnly
-                className="w-full border rounded-lg px-4 py-2"
+                className="w-full border rounded-lg px-4 py-2 bg-gray-100 dark:bg-gray-700 dark:text-gray-300"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700">
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                 Volunteer Email
               </label>
               <input
@@ -287,15 +296,15 @@ const VolunteerDetails = () => {
                 name="VolunteerEmail"
                 value={user?.email}
                 readOnly
-                className="w-full border rounded-lg px-4 py-2"
+                className="w-full border rounded-lg px-4 py-2 bg-gray-100 dark:bg-gray-700 dark:text-gray-300"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700">
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                 Suggestion
               </label>
               <textarea
-                className="w-full border rounded-lg px-4 py-2"
+                className="w-full border rounded-lg px-4 py-2 bg-gray-100 dark:bg-gray-700 dark:text-gray-300"
                 placeholder="Your suggestions here..."
               />
             </div>

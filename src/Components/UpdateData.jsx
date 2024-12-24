@@ -82,8 +82,8 @@ const UpdateData = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto px-6 py-8 bg-white shadow-lg rounded-lg">
-      <h1 className="text-2xl font-bold text-gray-800 text-center mb-6">
+    <div className="max-w-4xl mx-auto px-6 py-8 bg-white shadow-lg rounded-lg dark:bg-gray-800">
+      <h1 className="text-2xl font-bold text-gray-800 text-center mb-6 dark:text-gray-200">
         Update Volunteer Post
       </h1>
       <form onSubmit={handleUpdate} className="space-y-6">
@@ -91,7 +91,7 @@ const UpdateData = () => {
         <div>
           <label
             htmlFor="thumbnailUrl"
-            className="block text-lg font-semibold text-gray-700"
+            className="block text-lg font-semibold text-gray-700 dark:text-gray-300"
           >
             Thumbnail URL
           </label>
@@ -101,7 +101,7 @@ const UpdateData = () => {
             name="thumbnailUrl"
             defaultValue={thumbnailUrl}
             placeholder="Enter Image URL"
-            className="mt-2 block w-full rounded-lg border border-gray-300 shadow-sm p-3 focus:ring-blue-500 focus:border-blue-500"
+            className="mt-2 block w-full rounded-lg border border-gray-300 shadow-sm p-3 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-300"
           />
         </div>
 
@@ -109,7 +109,7 @@ const UpdateData = () => {
         <div>
           <label
             htmlFor="postTitle"
-            className="block text-lg font-semibold text-gray-700"
+            className="block text-lg font-semibold text-gray-700 dark:text-gray-300"
           >
             Post Title
           </label>
@@ -119,7 +119,7 @@ const UpdateData = () => {
             name="postTitle"
             defaultValue={postTitle}
             placeholder="Enter Post Title"
-            className="mt-2 block w-full rounded-lg border border-gray-300 shadow-sm p-3 focus:ring-blue-500 focus:border-blue-500"
+            className="mt-2 block w-full rounded-lg border border-gray-300 shadow-sm p-3 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-300"
           />
         </div>
 
@@ -127,7 +127,7 @@ const UpdateData = () => {
         <div>
           <label
             htmlFor="description"
-            className="block text-lg font-semibold text-gray-700"
+            className="block text-lg font-semibold text-gray-700 dark:text-gray-300"
           >
             Description
           </label>
@@ -137,7 +137,7 @@ const UpdateData = () => {
             defaultValue={description}
             rows="4"
             placeholder="Write a brief description..."
-            className="mt-2 block w-full rounded-lg border border-gray-300 shadow-sm p-3 focus:ring-blue-500 focus:border-blue-500"
+            className="mt-2 block w-full rounded-lg border border-gray-300 shadow-sm p-3 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-300"
           />
         </div>
 
@@ -146,7 +146,7 @@ const UpdateData = () => {
           <div>
             <label
               htmlFor="category"
-              className="block text-lg font-semibold text-gray-700"
+              className="block text-lg font-semibold text-gray-700 dark:text-gray-300"
             >
               Category
             </label>
@@ -154,7 +154,7 @@ const UpdateData = () => {
               id="category"
               name="category"
               defaultValue={post?.category}
-              className="mt-2 block w-full rounded-lg border border-gray-300 shadow-sm p-3 focus:ring-blue-500 focus:border-blue-500"
+              className="mt-2 block w-full rounded-lg border border-gray-300 shadow-sm p-3 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-300"
             >
               <option>Select a Category</option>
               <option value="Healthcare">Healthcare</option>
@@ -169,7 +169,7 @@ const UpdateData = () => {
         <div>
           <label
             htmlFor="location"
-            className="block text-lg font-semibold text-gray-700"
+            className="block text-lg font-semibold text-gray-700 dark:text-gray-300"
           >
             Location
           </label>
@@ -179,7 +179,7 @@ const UpdateData = () => {
             name="location"
             defaultValue={location}
             placeholder="Enter Location"
-            className="mt-2 block w-full rounded-lg border border-gray-300 shadow-sm p-3 focus:ring-blue-500 focus:border-blue-500"
+            className="mt-2 block w-full rounded-lg border border-gray-300 shadow-sm p-3 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-300"
           />
         </div>
 
@@ -187,7 +187,7 @@ const UpdateData = () => {
         <div>
           <label
             htmlFor="volunteersNeeded"
-            className="block text-lg font-semibold text-gray-700"
+            className="block text-lg font-semibold text-gray-700 dark:text-gray-300"
           >
             No. of Volunteers Needed
           </label>
@@ -197,7 +197,7 @@ const UpdateData = () => {
             name="volunteersNeeded"
             defaultValue={volunteersNeeded}
             min="1"
-            className="mt-2 block w-full rounded-lg border border-gray-300 shadow-sm p-3 focus:ring-blue-500 focus:border-blue-500"
+            className="mt-2 block w-full rounded-lg border border-gray-300 shadow-sm p-3 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-300"
           />
         </div>
 
@@ -205,14 +205,14 @@ const UpdateData = () => {
         <div>
           <label
             htmlFor="deadline"
-            className="block text-lg font-semibold text-gray-700"
+            className="block text-lg font-semibold text-gray-700 dark:text-gray-300"
           >
             Deadline
           </label>
           <DatePicker
             selected={deadline}
             onChange={handleDateChange}
-            className="mt-2 block w-full rounded-lg border border-gray-300 shadow-sm p-3 focus:ring-blue-500 focus:border-blue-500"
+            className="mt-2 block w-full rounded-lg border border-gray-300 shadow-sm p-3 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-300"
             id="deadline"
             name="deadline"
             required
@@ -224,7 +224,7 @@ const UpdateData = () => {
           <div>
             <label
               htmlFor="organizerName"
-              className="block text-lg font-semibold text-gray-700"
+              className="block text-lg font-semibold text-gray-700 dark:text-gray-300"
             >
               Organizer Name
             </label>
@@ -234,13 +234,13 @@ const UpdateData = () => {
               name="organizerName"
               defaultValue={organizerName}
               readOnly
-              className="mt-2 block w-full rounded-lg border border-gray-300 shadow-sm p-3 bg-gray-100"
+              className="mt-2 block w-full rounded-lg border border-gray-300 shadow-sm p-3 bg-gray-100 dark:bg-gray-600 dark:border-gray-600 dark:text-gray-300"
             />
           </div>
           <div>
             <label
               htmlFor="organizerEmail"
-              className="block text-lg font-semibold text-gray-700"
+              className="block text-lg font-semibold text-gray-700 dark:text-gray-300"
             >
               Organizer Email
             </label>
@@ -250,7 +250,7 @@ const UpdateData = () => {
               name="organizerEmail"
               defaultValue={organizerEmail}
               readOnly
-              className="mt-2 block w-full rounded-lg border border-gray-300 shadow-sm p-3 bg-gray-100"
+              className="mt-2 block w-full rounded-lg border border-gray-300 shadow-sm p-3 bg-gray-100 dark:bg-gray-600 dark:border-gray-600 dark:text-gray-300"
             />
           </div>
         </div>
@@ -259,7 +259,7 @@ const UpdateData = () => {
         <div className="flex justify-center">
           <button
             type="submit"
-            className="px-8 py-3 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 focus:ring focus:ring-blue-500 transition duration-300"
+            className="px-8 py-3 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 focus:ring focus:ring-blue-500 transition duration-300 dark:bg-blue-700 dark:hover:bg-blue-800"
           >
             Update
           </button>

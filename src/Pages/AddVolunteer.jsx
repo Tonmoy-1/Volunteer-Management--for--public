@@ -52,60 +52,60 @@ const AddVolunteer = () => {
   };
 
   return (
-    <div className="max-w-3xl mx-auto p-8 bg-white rounded-lg ">
-      <h2 className="text-3xl font-semibold text-center mb-8">
+    <div className="max-w-3xl mx-auto p-8 bg-white dark:bg-gray-800 rounded-lg ">
+      <h2 className="text-3xl font-semibold text-center mb-8 text-gray-900 dark:text-white">
         Add Volunteer Need Post
       </h2>
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Thumbnail URL */}
         <div>
-          <label className="block text-lg font-medium text-gray-800">
+          <label className="block text-lg font-medium text-gray-800 dark:text-gray-300">
             Thumbnail URL
           </label>
           <input
             type="url"
             name="thumbnailUrl"
             placeholder="Enter Image URL"
-            className="mt-2 block w-full text-gray-900 border border-gray-300 rounded-md p-3"
+            className="mt-2 block w-full text-gray-900 dark:text-white bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md p-3"
             required
           />
         </div>
 
         {/* Post Title */}
         <div>
-          <label className="block text-lg font-medium text-gray-800">
+          <label className="block text-lg font-medium text-gray-800 dark:text-gray-300">
             Post Title
           </label>
           <input
             type="text"
             name="postTitle"
             required
-            className="mt-2 block w-full text-gray-900 border border-gray-300 rounded-md p-3"
+            className="mt-2 block w-full text-gray-900 dark:text-white bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md p-3"
           />
         </div>
 
         {/* Description */}
         <div>
-          <label className="block text-lg font-medium text-gray-800">
+          <label className="block text-lg font-medium text-gray-800 dark:text-gray-300">
             Description
           </label>
           <textarea
             name="description"
             required
             rows="4"
-            className="mt-2 block w-full text-gray-900 border border-gray-300 rounded-md p-3"
+            className="mt-2 block w-full text-gray-900 dark:text-white bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md p-3"
           />
         </div>
 
         {/* Category */}
         <div>
-          <label className="block text-lg font-medium text-gray-800">
+          <label className="block text-lg font-medium text-gray-800 dark:text-gray-300">
             Category
           </label>
           <select
             name="category"
             required
-            className="mt-2 block w-full text-gray-900 border border-gray-300 rounded-md p-3"
+            className="mt-2 block w-full text-gray-900 dark:text-white bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md p-3"
           >
             <option value="">Select a Category</option>
             <option value="Healthcare">Healthcare</option>
@@ -117,20 +117,20 @@ const AddVolunteer = () => {
 
         {/* Location */}
         <div>
-          <label className="block text-lg font-medium text-gray-800">
+          <label className="block text-lg font-medium text-gray-800 dark:text-gray-300">
             Location
           </label>
           <input
             type="text"
             name="location"
             required
-            className="mt-2 block w-full text-gray-900 border border-gray-300 rounded-md p-3"
+            className="mt-2 block w-full text-gray-900 dark:text-white bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md p-3"
           />
         </div>
 
         {/* Volunteers Needed */}
         <div>
-          <label className="block text-lg font-medium text-gray-800">
+          <label className="block text-lg font-medium text-gray-800 dark:text-gray-300">
             No. of Volunteers Needed
           </label>
           <input
@@ -138,27 +138,27 @@ const AddVolunteer = () => {
             name="volunteersNeeded"
             required
             min="1"
-            className="mt-2 block w-full text-gray-900 border border-gray-300 rounded-md p-3"
+            className="mt-2 block w-full text-gray-900 dark:text-white bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md p-3"
           />
         </div>
 
         {/* Deadline */}
         <div>
-          <label className="block text-lg font-medium text-gray-800">
+          <label className="block text-lg font-medium text-gray-800 dark:text-gray-300">
             Deadline
           </label>
           <DatePicker
             selected={startDate}
             onChange={(date) => setStartDate(date)}
-            className="mt-2 block w-full text-gray-900 border border-gray-300 rounded-md p-3"
+            className="mt-2 block w-full text-gray-900 dark:text-white bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md p-3"
             name="deadline"
             required
           />
         </div>
 
-        {/* Organizer Name and Email */}
+        {/* Organizer Name */}
         <div>
-          <label className="block text-lg font-medium text-gray-800">
+          <label className="block text-lg font-medium text-gray-800 dark:text-gray-300">
             Organizer Name
           </label>
           <input
@@ -166,11 +166,13 @@ const AddVolunteer = () => {
             name="organizerName"
             value={user?.displayName}
             readOnly
-            className="mt-2 block w-full text-gray-900 border border-gray-300 rounded-md p-3"
+            className="mt-2 block w-full text-gray-900 dark:text-white bg-gray-100 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md p-3"
           />
         </div>
+
+        {/* Organizer Email */}
         <div>
-          <label className="block text-lg font-medium text-gray-800">
+          <label className="block text-lg font-medium text-gray-800 dark:text-gray-300">
             Organizer Email
           </label>
           <input
@@ -178,7 +180,7 @@ const AddVolunteer = () => {
             name="organizerEmail"
             value={user?.email}
             readOnly
-            className="mt-2 block w-full text-gray-900 border border-gray-300 rounded-md p-3"
+            className="mt-2 block w-full text-gray-900 dark:text-white bg-gray-100 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md p-3"
           />
         </div>
 
@@ -186,7 +188,7 @@ const AddVolunteer = () => {
         <div className="flex justify-center">
           <button
             type="submit"
-            className="mt-6 px-8 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition duration-300"
+            className="mt-6 px-8 py-3 bg-blue-600 dark:bg-blue-700 text-white font-semibold rounded-lg hover:bg-blue-700 dark:hover:bg-blue-800 transition duration-300"
           >
             Add Post
           </button>

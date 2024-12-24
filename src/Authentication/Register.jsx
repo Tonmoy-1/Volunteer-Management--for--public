@@ -5,15 +5,17 @@ import toast from "react-hot-toast";
 import { AuthContext } from "../Provider/AuthProvider";
 
 const Register = () => {
-  const { createUser, signInWithGoogle } = useContext(AuthContext);
+  const { createUser, signInWithGoogle, updateUserProfile, setUser } =
+    useContext(AuthContext);
   const navigate = useNavigate();
   const [error, setError] = useState(null);
 
   const handleRegister = async (e) => {
     e.preventDefault();
     const form = e.target;
-    // const name = form.name.value;
+    const name = form.name.value;
     const email = form.email.value;
+    const photo = form.photo.value;
     const password = form.password.value;
 
     if (password.length < 6) {
@@ -26,7 +28,9 @@ const Register = () => {
       return setError("Password must contain at least one lowercase letter.");
     }
     try {
-      await createUser(email, password);
+      const result = await createUser(email, password);
+      await updateUserProfile(name, photo);
+      setUser({ ...result.user, photoURL: photo, displayName: name });
       toast.success("Registration Successful");
       navigate("/");
     } catch (err) {
@@ -66,6 +70,18 @@ const Register = () => {
               className="w-full mt-2 p-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-600 dark:border-gray-500 dark:text-gray-100"
               placeholder="Enter your full name"
               required
+            />
+          </div>
+          <div className="mt-4">
+            <label className="block text-sm font-medium text-gray-600 dark:text-gray-300">
+              Photo URL
+            </label>
+            <input
+              id="photo"
+              autoComplete="photo"
+              name="photo"
+              className="w-full mt-2 p-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-600 dark:border-gray-500 dark:text-gray-100"
+              type="url"
             />
           </div>
 

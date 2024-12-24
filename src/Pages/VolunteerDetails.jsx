@@ -5,6 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 import toast from "react-hot-toast";
 import Spinner from "../Components/Spiner";
+import { formatDate } from "date-fns";
 
 const VolunteerDetails = () => {
   const [volunteer, setVolunteer] = useState(null);
@@ -24,7 +25,7 @@ const VolunteerDetails = () => {
         setVolunteer(data);
         setLoading(false);
       } catch (error) {
-        console.log(error);
+        toast.error(error.message);
       }
     };
     fetchData();
@@ -59,7 +60,7 @@ const VolunteerDetails = () => {
 
   const handleVolunteerRequest = async (e) => {
     e.preventDefault();
-    console.log("data submited");
+
     const form = e.target;
     const postTitle = form.postTitle.value;
     const description = form.description.value;
@@ -122,7 +123,7 @@ const VolunteerDetails = () => {
             <div className="flex items-center justify-center md:justify-start">
               <FaCalendarAlt className="text-blue-600 mr-3 text-xl" />
               <span className="text-gray-800 text-lg">
-                <strong>Deadline:</strong> {deadline}
+                <strong>Deadline:</strong> {formatDate(new Date(deadline), "P")}
               </span>
             </div>
             <div className="flex items-center justify-center md:justify-start">

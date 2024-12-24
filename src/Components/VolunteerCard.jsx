@@ -1,3 +1,4 @@
+import { formatDate } from "date-fns";
 import { Link } from "react-router-dom";
 
 /* eslint-disable react/prop-types */
@@ -33,7 +34,8 @@ const VolunteerCard = ({ singledata }) => {
 
         {/* Deadline */}
         <p className="text-sm text-gray-600 mb-4 dark:text-gray-400">
-          <span className="font-medium">Deadline: </span> {deadline}
+          <span className="font-medium">Deadline: </span>
+          {formatDate(new Date(deadline), "P")}
         </p>
 
         {/* View Details Button */}

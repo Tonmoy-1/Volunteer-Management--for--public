@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import VolunteerCard from "../Components/VolunteerCard";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const VolunteerNeed = () => {
   const [data, seteData] = useState([]);
@@ -14,7 +15,7 @@ const VolunteerNeed = () => {
         );
         seteData(data);
       } catch (error) {
-        console.log(error);
+        toast.error(error.message);
       }
     };
     fetchData();

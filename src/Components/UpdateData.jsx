@@ -29,7 +29,7 @@ const UpdateData = () => {
       );
       setPost(data);
     } catch (error) {
-      console.log(error);
+      toast.error(error.message);
     }
   };
 
@@ -77,7 +77,7 @@ const UpdateData = () => {
       toast.success("Data Updated Successfully");
       navigate("/my-volunteer");
     } catch (error) {
-      console.log(error);
+      toast.error(error.message);
     }
   };
 

@@ -4,6 +4,8 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import Swal from "sweetalert2";
 import Spinner from "./Spiner";
+import { formatDate } from "date-fns";
+import toast from "react-hot-toast";
 
 const MyVolunteerRequest = () => {
   const [requests, setRequests] = useState([]);
@@ -52,7 +54,7 @@ const MyVolunteerRequest = () => {
         fetchData();
       }
     } catch (error) {
-      console.log(error);
+      toast.error(error.message);
     }
   };
 
@@ -103,7 +105,7 @@ const MyVolunteerRequest = () => {
                     {request.volunteersNeeded}
                   </td>
                   <td className="px-4 sm:px-6 py-2 sm:py-4 text-gray-800 dark:text-gray-200">
-                    {request.deadline}
+                    {formatDate(new Date(request.deadline), "P")}
                   </td>
                   <td className="px-4 sm:px-6 py-2 sm:py-4">
                     <span

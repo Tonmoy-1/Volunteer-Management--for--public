@@ -46,7 +46,7 @@ const MyVolunteerNeedPosts = () => {
         confirmButtonText: "Yes, delete it!",
       });
       if (result.isConfirmed) {
-        const { data } = await axios.delete(
+        await axios.delete(
           `${import.meta.env.VITE_API_URL}/myvolunteer-needposts/${id}`
         );
 
@@ -55,11 +55,11 @@ const MyVolunteerNeedPosts = () => {
           text: "Your file has been deleted.",
           icon: "success",
         });
-        console.log(data);
+
         fetchVolunteers();
       }
     } catch (error) {
-      console.log(error);
+      toast.error(error.message);
     }
   };
 

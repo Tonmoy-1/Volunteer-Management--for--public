@@ -4,6 +4,7 @@ import VolunteerCard from "../Components/VolunteerCard";
 import { FaTh, FaTable } from "react-icons/fa";
 import Spinner from "../Components/Spiner";
 import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const AllVolunteers = () => {
   const [volunteers, setVolunteers] = useState([]);
@@ -20,7 +21,7 @@ const AllVolunteers = () => {
         setVolunteers(data);
         setLoading(false);
       } catch (error) {
-        console.log(error);
+        toast.error(error.message);
       }
     };
     fetchVolunteers();

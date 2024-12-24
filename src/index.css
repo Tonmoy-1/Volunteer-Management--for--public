@@ -108,3 +108,8 @@ footer {
 html.dark footer {
   @apply bg-gray-800 text-gray-200;
 }
+
+.active {
+  font-weight: bold !important;
+  color: #3b82f6 !important;
+}

@@ -5,8 +5,9 @@ import { AuthContext } from "../Provider/AuthProvider";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
 
   // Apply theme on load
   useEffect(() => {
@@ -22,7 +23,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-[#006F5F] dark:bg-gray-900 text-white ">
+    <nav className="bg-[#006F5F] dark:bg-gray-900 text-white">
       <div className="container mx-auto px-10 py-4 flex justify-between items-center">
         {/* Logo Section */}
         <div className="text-2xl font-semibold">
@@ -41,7 +42,7 @@ const Navbar = () => {
             to="/all-volunteers"
             className="hover:text-[#FFD700] dark:hover:text-yellow-300"
           >
-            All Posts
+            Need Vlounteers
           </NavLink>
         </div>
 
@@ -57,18 +58,24 @@ const Navbar = () => {
 
           {/* Authentication Section */}
           {!user ? (
-            <Link
+            <NavLink
               to="/login"
               className="bg-white dark:bg-yellow-500 text-[#006F5F] dark:text-gray-900 px-6 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-yellow-400"
             >
               Login
-            </Link>
+            </NavLink>
           ) : (
-            <div className="relative">
-              <button onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
+            <div
+              className="relative group"
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
+            >
+              <button
+                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                className="flex items-center"
+              >
                 {user.photoURL ? (
                   <img
-                    referrerPolicy="no-referrer"
                     src={user.photoURL}
                     alt={user.displayName}
                     className="w-10 h-10 rounded-full border-2 border-white dark:border-gray-600"
@@ -79,6 +86,21 @@ const Navbar = () => {
               </button>
 
               {/* Dropdown Menu */}
+              {isHovered && !isDropdownOpen && (
+                <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 shadow-lg rounded-lg z-50">
+                  <p className="p-3 text-sm text-gray-700 dark:text-gray-300 border-b dark:border-gray-700">
+                    Hello, {user.displayName || "User"}
+                  </p>
+                  <button
+                    onClick={logOut}
+                    className="block p-3 text-red-500 hover:bg-red-100 dark:hover:bg-red-800"
+                  >
+                    Logout
+                  </button>
+                </div>
+              )}
+
+              {/* Full Dropdown Menu (opens on click) */}
               {isDropdownOpen && (
                 <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 shadow-lg rounded-lg z-50">
                   <p className="p-3 text-sm text-gray-700 dark:text-gray-300 border-b dark:border-gray-700">
@@ -88,29 +110,29 @@ const Navbar = () => {
                   <div className="md:hidden flex gap-3 flex-col ml-3">
                     <NavLink
                       to="/"
-                      className="hover:text-[#FFD700] dark:hover:text-yellow-300"
+                      className="hover:text-[#FFD700] dark:hover:text-yellow-300  text-gray-700 dark:text-gray-300"
                     >
                       Home
                     </NavLink>
                     <NavLink
                       to="/all-volunteers"
-                      className="hover:text-[#FFD700] dark:hover:text-yellow-300"
+                      className="hover:text-[#FFD700] dark:hover:text-yellow-300  text-gray-700 dark:text-gray-300"
                     >
                       All Volunteers
                     </NavLink>
                   </div>
-                  <Link
+                  <NavLink
                     to="/add-volunteer"
-                    className="block p-3 text-gray-700 dark:text-gray-300  hover:bg-gray-100 dark:hover:bg-gray-700"
+                    className="block p-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
                     Add Post
-                  </Link>
-                  <Link
+                  </NavLink>
+                  <NavLink
                     to="/my-volunteer"
                     className="block p-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
                     Manage Posts
-                  </Link>
+                  </NavLink>
                   <button
                     onClick={logOut}
                     className="block p-3 text-red-500 hover:bg-red-100 dark:hover:bg-red-800"

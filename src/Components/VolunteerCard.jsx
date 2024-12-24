@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 /* eslint-disable react/prop-types */
 const VolunteerCard = ({ singledata }) => {
   const { category, deadline, postTitle, thumbnailUrl, _id, volunteersNeeded } =
-    singledata;
+    singledata || {};
 
   return (
     <div className="bg-white shadow-lg rounded-lg overflow-hidden dark:bg-gray-800">

@@ -6,7 +6,7 @@ The Volunteer Management Platform is a user-friendly web application that facili
 
 ## Live URL
 
-[https://volunteer-connect-793ad.web.app](#) _(Replace with the actual link once deployed)_
+[https://volunteer-connect-793ad.web.app](#)
 
 ## Key Features
 
@@ -58,4 +58,5 @@ The Volunteer Management Platform is a user-friendly web application that facili
 - `cors`: For handling cross-origin requests.
 
 # Thanks For Read This
+
 **MD:Tonmoy Hosen**

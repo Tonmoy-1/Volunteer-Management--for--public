@@ -1,10 +1,15 @@
 import { Link } from "react-router-dom";
 import { FaExclamationTriangle } from "react-icons/fa";
 import errorImage from "../assets/error-image.webp";
+import { Helmet } from "react-helmet-async";
 
 const ErrorPage = () => {
   return (
     <div className="flex items-center justify-center h-screen bg-gray-100 dark:bg-gray-900">
+      <Helmet>
+        <title>Error Nothing Here</title>
+        <link rel="canonical" href="https://www.tacobell.com/" />
+      </Helmet>
       <div className="text-center">
         <img
           src={errorImage}

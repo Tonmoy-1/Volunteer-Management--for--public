@@ -24,7 +24,7 @@ const VolunteerNeed = () => {
   return (
     <div className="px-4 py-6 w-11/12 mx-auto">
       <h1 className="text-2xl font-bold text-gray-800 dark:text-gray-200 mb-6 text-center">
-        Volunteer Needs
+        Volunteer Needs Now
       </h1>
       <div className="grid gap-3 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {data.map((singledata, index) => (

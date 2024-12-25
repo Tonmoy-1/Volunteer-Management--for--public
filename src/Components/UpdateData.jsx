@@ -4,6 +4,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { Helmet } from "react-helmet-async";
 import toast from "react-hot-toast";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
@@ -83,6 +84,10 @@ const UpdateData = () => {
 
   return (
     <div className="max-w-4xl mx-auto px-6 py-8 bg-white shadow-lg rounded-lg dark:bg-gray-800">
+      <Helmet>
+        <title>Update Volunteer Post</title>
+        <link rel="canonical" href="https://www.tacobell.com/" />
+      </Helmet>
       <h1 className="text-2xl font-bold text-gray-800 text-center mb-6 dark:text-gray-200">
         Update Volunteer Post
       </h1>

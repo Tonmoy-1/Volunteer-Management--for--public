@@ -6,6 +6,7 @@ import { AuthContext } from "../Provider/AuthProvider";
 import toast from "react-hot-toast";
 import Spinner from "../Components/Spiner";
 import { formatDate } from "date-fns";
+import { Helmet } from "react-helmet-async";
 
 const VolunteerDetails = () => {
   const [volunteer, setVolunteer] = useState(null);
@@ -108,6 +109,10 @@ const VolunteerDetails = () => {
 
   return (
     <div className="max-w-6xl mx-auto p-8 bg-gradient-to-r from-blue-50 to-blue-100 rounded-lg mt-10">
+      <Helmet>
+        <title>Volunteer Details Page</title>
+        <link rel="canonical" href="https://www.tacobell.com/" />
+      </Helmet>
       <div className="flex flex-col md:flex-row md:space-x-12 items-center">
         <img
           src={thumbnailUrl}

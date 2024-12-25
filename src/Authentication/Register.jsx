@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { FaGoogle } from "react-icons/fa";
 import toast from "react-hot-toast";
 import { AuthContext } from "../Provider/AuthProvider";
+import { Helmet } from "react-helmet-async";
 
 const Register = () => {
   const { createUser, signInWithGoogle, updateUserProfile, setUser } =
@@ -49,6 +50,10 @@ const Register = () => {
 
   return (
     <div className="flex justify-center py-5 items-center min-h-screen bg-gray-100 dark:bg-gray-800">
+      <Helmet>
+        <title>Register Page</title>
+        <link rel="canonical" href="https://www.tacobell.com/" />
+      </Helmet>
       <div className="w-full max-w-md p-8 bg-white rounded-lg dark:bg-gray-700">
         <h2 className="text-3xl font-semibold text-center text-gray-700 dark:text-gray-200 mb-6">
           Create Your Account

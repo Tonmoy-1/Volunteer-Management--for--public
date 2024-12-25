@@ -5,6 +5,7 @@ import { AuthContext } from "../Provider/AuthProvider";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const AddVolunteer = () => {
   const { user } = useContext(AuthContext);
@@ -53,6 +54,10 @@ const AddVolunteer = () => {
 
   return (
     <div className="max-w-3xl mx-auto p-8 bg-white dark:bg-gray-800 rounded-lg ">
+      <Helmet>
+        <title>Add Volunteer Need Post</title>
+        <link rel="canonical" href="https://www.tacobell.com/" />
+      </Helmet>
       <h2 className="text-3xl font-semibold text-center mb-8 text-gray-900 dark:text-white">
         Add Volunteer Need Post
       </h2>

@@ -23,8 +23,21 @@ const Navbar = () => {
     document.documentElement.classList.toggle("dark", newTheme === "dark");
   };
 
+  let hideTimeout;
+
+  const handleMouseEnter = () => {
+    clearTimeout(hideTimeout);
+    setIsHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    hideTimeout = setTimeout(() => {
+      setIsHovered(false);
+    }, 1000);
+  };
+
   return (
-    <nav className="bg-[#006F5F] dark:bg-gray-900 text-white">
+    <nav className="bg-[#1A2634] dark:bg-[#1A2634] text-white">
       <div className="container mx-auto px-10 py-4 flex justify-between items-center">
         {/* Logo Section */}
         <div className="text-2xl font-semibold">
@@ -43,7 +56,7 @@ const Navbar = () => {
             to="/all-volunteers"
             className="hover:text-[#FFD700] dark:hover:text-yellow-300"
           >
-            Need Vlounteers
+            All Volunteer Need Post
           </NavLink>
           <button
             onClick={() => setIsDropdownOpen(!isDropdownOpen)}
@@ -97,8 +110,8 @@ const Navbar = () => {
             // show just on hover and enter mouse
             <div
               className="relative group"
-              onMouseEnter={() => setIsHovered(true)}
-              onMouseLeave={() => setIsHovered(false)}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
             >
               <button
                 onClick={() => setIsDropdownOpenMo(!isDropdownOpenMo)}
@@ -148,7 +161,7 @@ const Navbar = () => {
                       to="/all-volunteers"
                       className="hover:text-[#FFD700] dark:hover:text-yellow-300  text-gray-700 dark:text-gray-300"
                     >
-                      All Volunteers
+                      All Volunteer Need Post
                     </NavLink>
                   </div>
                   <NavLink
@@ -159,9 +172,9 @@ const Navbar = () => {
                   </NavLink>
                   <NavLink
                     to="/my-volunteer"
-                    className="block p-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+                    className="block px-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
-                    Manage Posts
+                    Manage My Volunteer
                   </NavLink>
                   <button
                     onClick={logOut}

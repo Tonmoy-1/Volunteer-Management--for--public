@@ -5,6 +5,7 @@ import { FaTh, FaTable } from "react-icons/fa";
 import Spinner from "../Components/Spiner";
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet-async";
 
 const AllVolunteers = () => {
   const [volunteers, setVolunteers] = useState([]);
@@ -29,6 +30,10 @@ const AllVolunteers = () => {
 
   return (
     <div className="max-w-6xl mx-auto p-8 bg-white dark:bg-gray-900">
+      <Helmet>
+        <title>All Volunteer Need Post</title>
+        <link rel="canonical" href="https://www.tacobell.com/" />
+      </Helmet>
       <h1 className="text-4xl font-extrabold text-center mb-10 text-blue-900 dark:text-blue-300">
         Volunteer Opportunities
       </h1>

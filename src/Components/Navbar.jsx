@@ -64,7 +64,7 @@ const Navbar = () => {
           >
             My Profile
             {isDropdownOpen && (
-              <div className="absolute right-[30%] mt-3 w-52 bg-white dark:bg-gray-800 shadow-lg rounded-lg z-50">
+              <div className="absolute right-[28%] mt-3 w-56 bg-white dark:bg-gray-800 shadow-lg rounded-lg z-50">
                 <NavLink
                   to="/add-volunteer"
                   className="block p-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700  border-gray-300 border-b-2"
@@ -75,7 +75,7 @@ const Navbar = () => {
                   to="/my-volunteer"
                   className="block p-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 border-gray-300 border-b-2"
                 >
-                  Manage Posts
+                  Manage My Volunteer Posts
                 </NavLink>
                 <button
                   onClick={logOut}
@@ -146,7 +146,7 @@ const Navbar = () => {
 
               {/* Full Dropdown Menu (opens on click) */}
               {isDropdownOpenMo && (
-                <div className="absolute right-[30%] mt-2 w-48 bg-white dark:bg-gray-800 shadow-lg rounded-lg z-50 md:hidden">
+                <div className="absolute right-[30%] mt-2 w-52 bg-white dark:bg-gray-800 shadow-lg rounded-lg z-50 md:hidden">
                   <p className="p-3 text-sm text-gray-700 dark:text-gray-300 border-b dark:border-gray-700">
                     Hello, {user.displayName || "User"}
                   </p>
@@ -174,7 +174,7 @@ const Navbar = () => {
                     to="/my-volunteer"
                     className="block px-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
-                    Manage My Volunteer
+                    Manage My Volunteer Posts
                   </NavLink>
                   <button
                     onClick={logOut}

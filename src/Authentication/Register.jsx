@@ -49,12 +49,12 @@ const Register = () => {
   };
 
   return (
-    <div className="flex justify-center py-5 items-center min-h-screen bg-gray-100 dark:bg-gray-800">
+    <div className="flex justify-center py-5 items-center min-h-screen  dark:bg-gray-800">
       <Helmet>
-        <title>Register Page</title>
+        <title>Register</title>
         <link rel="canonical" href="https://www.tacobell.com/" />
       </Helmet>
-      <div className="w-full max-w-md p-8 bg-white rounded-lg dark:bg-gray-700">
+      <div className="w-full max-w-lg p-8 bg-white rounded-lg dark:bg-gray-700">
         <h2 className="text-3xl font-semibold text-center text-gray-700 dark:text-gray-200 mb-6">
           Create Your Account
         </h2>

@@ -3,9 +3,11 @@ import VolunteerCard from "../Components/VolunteerCard";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
+import Spinner from "../Components/Spiner";
 
 const VolunteerNeed = () => {
   const [data, seteData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -14,6 +16,7 @@ const VolunteerNeed = () => {
           `${import.meta.env.VITE_API_URL}/limited-volunteers`
         );
         seteData(data);
+        setLoading(false);
       } catch (error) {
         toast.error(error.message);
       }
@@ -26,6 +29,7 @@ const VolunteerNeed = () => {
       <h1 className="text-2xl font-bold text-gray-800 dark:text-gray-200 mb-6 text-center">
         Volunteer Needs Now
       </h1>
+      {loading && <Spinner />}
       <div className="grid gap-3 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {data.map((singledata, index) => (
           <VolunteerCard key={index} singledata={singledata}></VolunteerCard>

@@ -37,12 +37,12 @@ const Login = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100 dark:bg-gray-800">
+    <div className="flex justify-center items-center min-h-screen  dark:bg-gray-800">
       <Helmet>
         <title>Login Page</title>
         <link rel="canonical" href="https://www.tacobell.com/" />
       </Helmet>
-      <div className="w-full max-w-sm p-8 bg-white shadow-xl rounded-lg dark:bg-gray-700">
+      <div className="w-full max-w-lg p-8 bg-white  rounded-lg dark:bg-gray-700">
         <h2 className="text-3xl font-semibold text-center text-gray-700 dark:text-gray-200 mb-6">
           Login to Your Account
         </h2>

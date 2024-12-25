@@ -53,8 +53,6 @@ const Register = () => {
         <h2 className="text-3xl font-semibold text-center text-gray-700 dark:text-gray-200 mb-6">
           Create Your Account
         </h2>
-        {error && <p className="text-red-500 text-center mb-4">{error}</p>}
-
         <form onSubmit={handleRegister} className="space-y-4">
           <div>
             <label
@@ -118,6 +116,7 @@ const Register = () => {
               required
             />
           </div>
+          {error && <p className="text-red-500 text-center mb-4">{error}</p>}
 
           <button
             type="submit"

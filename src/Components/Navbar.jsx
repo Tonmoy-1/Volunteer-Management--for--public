@@ -7,6 +7,7 @@ const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isDropdownOpenMo, setIsDropdownOpenMo] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
 
   // Apply theme on load
@@ -44,6 +45,34 @@ const Navbar = () => {
           >
             Need Vlounteers
           </NavLink>
+          <button
+            onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+            className="hover:text-[#FFD700] hidden md:block lg:block dark:hover:text-yellow-300"
+          >
+            My Profile
+            {isDropdownOpen && (
+              <div className="absolute right-[30%] mt-3 w-52 bg-white dark:bg-gray-800 shadow-lg rounded-lg z-50">
+                <NavLink
+                  to="/add-volunteer"
+                  className="block p-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700  border-gray-300 border-b-2"
+                >
+                  Add Volunteer Need Post
+                </NavLink>
+                <NavLink
+                  to="/my-volunteer"
+                  className="block p-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 border-gray-300 border-b-2"
+                >
+                  Manage Posts
+                </NavLink>
+                <button
+                  onClick={logOut}
+                  className=" p-3 text-red-500 hover:bg-red-100 dark:hover:bg-red-800"
+                >
+                  Logout
+                </button>
+              </div>
+            )}
+          </button>
         </div>
 
         {/* Actions Section */}
@@ -65,13 +94,14 @@ const Navbar = () => {
               Login
             </NavLink>
           ) : (
+            // show just on hover and enter mouse
             <div
               className="relative group"
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
             >
               <button
-                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                onClick={() => setIsDropdownOpenMo(!isDropdownOpenMo)}
                 className="flex items-center"
               >
                 {user.photoURL ? (
@@ -87,7 +117,7 @@ const Navbar = () => {
               </button>
 
               {/* Dropdown Menu */}
-              {isHovered && !isDropdownOpen && (
+              {isHovered && !isDropdownOpenMo && (
                 <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 shadow-lg rounded-lg z-50 hidden lg:block">
                   <p className="p-3 text-sm text-gray-700 dark:text-gray-300 border-b dark:border-gray-700">
                     Hello, {user.displayName || "User"}
@@ -102,12 +132,11 @@ const Navbar = () => {
               )}
 
               {/* Full Dropdown Menu (opens on click) */}
-              {isDropdownOpen && (
-                <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 shadow-lg rounded-lg z-50">
+              {isDropdownOpenMo && (
+                <div className="absolute right-[30%] mt-2 w-48 bg-white dark:bg-gray-800 shadow-lg rounded-lg z-50 md:hidden">
                   <p className="p-3 text-sm text-gray-700 dark:text-gray-300 border-b dark:border-gray-700">
                     Hello, {user.displayName || "User"}
                   </p>
-
                   <div className="md:hidden flex gap-3 flex-col ml-3">
                     <NavLink
                       to="/"

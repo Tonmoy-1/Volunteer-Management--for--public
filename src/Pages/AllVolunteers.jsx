@@ -32,7 +32,6 @@ const AllVolunteers = () => {
       <h1 className="text-4xl font-extrabold text-center mb-10 text-blue-900 dark:text-blue-300">
         Volunteer Opportunities
       </h1>
-      {loading && <Spinner />}
 
       <div className="flex gap-5 justify-center mb-12 items-center">
         <input
@@ -51,6 +50,8 @@ const AllVolunteers = () => {
           </div>
         </div>
       </div>
+
+      {loading && <Spinner />}
 
       {/* Conditional Rendering based on View Mode */}
       {viewMode === "card" ? (

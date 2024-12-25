@@ -6,8 +6,10 @@ import Swal from "sweetalert2";
 import Spinner from "./Spiner";
 import { formatDate } from "date-fns";
 import toast from "react-hot-toast";
+import useAxiosSecure from "../Hooks/useAxious";
 
 const MyVolunteerRequest = () => {
+  const useAxious = useAxiosSecure();
   const [requests, setRequests] = useState([]);
   const [loading, setLoading] = useState(true);
   const { user } = useContext(AuthContext);
@@ -20,14 +22,11 @@ const MyVolunteerRequest = () => {
   const fetchData = async () => {
     setLoading(true);
     try {
-      const { data } = await axios.get(
-        `${import.meta.env.VITE_API_URL}/my-request/?email=${email}`,
-        { withCredentials: true }
-      );
+      const { data } = await useAxious.get(`/my-request/?email=${email}`);
       setRequests(data);
       setLoading(false);
     } catch (error) {
-      console.error("Error fetching requests:", error);
+      console.log(error);
     }
   };
 

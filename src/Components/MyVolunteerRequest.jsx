@@ -26,7 +26,7 @@ const MyVolunteerRequest = () => {
       setRequests(data);
       setLoading(false);
     } catch (error) {
-      console.log(error);
+      error;
     }
   };
 
@@ -65,6 +65,7 @@ const MyVolunteerRequest = () => {
       <p className="mb-4 text-sm sm:text-base text-gray-600 dark:text-gray-300">
         Viewing data for: {user?.email}
       </p>
+      {loading && <Spinner></Spinner>}
       {requests.length > 0 ? (
         <div className="overflow-x-auto lg:overflow-visible">
           <table className="min-w-full bg-white shadow-md rounded-lg dark:bg-gray-800">
@@ -91,7 +92,6 @@ const MyVolunteerRequest = () => {
               </tr>
             </thead>
             <tbody>
-              {loading && <Spinner />}
               {requests.map((request) => (
                 <tr key={request.id} className="border-t dark:border-gray-600">
                   <td className="px-4 sm:px-6 py-2 sm:py-4 text-gray-800 dark:text-gray-200">

@@ -1,7 +1,15 @@
 import { Link } from "react-router-dom";
+import { Typewriter } from "react-simple-typewriter";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
 
 const SuccessStories = () => {
   // Example data for the success stories
+  useEffect(() => {
+    AOS.init();
+  }, []);
+
   const stories = [
     {
       id: 1,
@@ -56,8 +64,19 @@ const SuccessStories = () => {
   return (
     <section className="bg-gradient-to-r from-indigo-500 via-purple-600 to-pink-600 py-16">
       <div className="container mx-auto text-center text-white">
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-6 sm:mb-8 tracking-wide">
-          Making a Difference: Volunteer Success Stories
+        <h2 className="text-3xl px-2  md:text-4xl font-extrabold mb-6 sm:mb-8 tracking-wide">
+          Making a Difference: Volunteer
+          <span className="text-green-500">
+            <Typewriter
+              words={[" Success Stories"]}
+              cursor
+              loop={true}
+              cursorStyle="_"
+              typeSpeed={70}
+              deleteSpeed={50}
+              delaySpeed={1000}
+            />
+          </span>
         </h2>
         <p className="text-base sm:text-lg font-medium mb-8 sm:mb-10">
           Read how individuals are transforming communities and inspiring
@@ -69,6 +88,7 @@ const SuccessStories = () => {
           {stories.map((story) => (
             <div
               key={story.id}
+              data-aos="flip-right"
               className="bg-white dark:bg-gray-800 p-6 sm:p-8 rounded-3xl shadow-2xl transform hover:scale-105 transition duration-300 ease-in-out"
             >
               <div className="overflow-hidden rounded-2xl mb-6">

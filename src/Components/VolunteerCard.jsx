@@ -1,13 +1,23 @@
 import { formatDate } from "date-fns";
 import { Link } from "react-router-dom";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
 
 /* eslint-disable react/prop-types */
 const VolunteerCard = ({ singledata }) => {
   const { category, deadline, postTitle, thumbnailUrl, _id, volunteersNeeded } =
     singledata || {};
 
+  useEffect(() => {
+    AOS.init();
+  }, []);
+
   return (
-    <div className="bg-white shadow-lg rounded-lg overflow-hidden dark:bg-gray-800">
+    <div
+      data-aos="zoom-in-left"
+      className="bg-white shadow-lg rounded-lg overflow-hidden dark:bg-gray-800"
+    >
       {/* Thumbnail */}
       <img
         src={thumbnailUrl}

@@ -7,8 +7,10 @@ import toast from "react-hot-toast";
 import Spinner from "../Components/Spiner";
 import { formatDate } from "date-fns";
 import { Helmet } from "react-helmet-async";
+import useAxiosSecure from "../Hooks/useAxious";
 
 const VolunteerDetails = () => {
+  const useAxious = useAxiosSecure();
   const [volunteer, setVolunteer] = useState(null);
   const { id } = useParams();
   const navigate = useNavigate();
@@ -19,18 +21,17 @@ const VolunteerDetails = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const { data } = await axios.get(
-          `${import.meta.env.VITE_API_URL}/volunteer-details/${id}`,
-          { withCredentials: true }
+        const { data } = await useAxious.get(
+          `/volunteer-details/${id}/?email=${user?.email}`
         );
         setVolunteer(data);
         setLoading(false);
       } catch (error) {
-        toast.error(error.message);
+        error && toast.error("Unauthorized Acces");
       }
     };
     fetchData();
-  }, [id]);
+  }, [id, useAxious, user?.email]);
 
   if (loading) {
     return (

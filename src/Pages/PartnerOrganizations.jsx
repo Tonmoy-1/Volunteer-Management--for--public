@@ -1,4 +1,12 @@
+import { Typewriter } from "react-simple-typewriter";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
+
 const PartnerOrganizations = () => {
+  useEffect(() => {
+    AOS.init();
+  }, []);
   const partners = [
     {
       id: 1,
@@ -44,15 +52,25 @@ const PartnerOrganizations = () => {
         <h2 className="text-3xl sm:text-4xl font-extrabold mb-8">
           Our Partner Organizations
         </h2>
-        <p className="text-lg sm:text-xl mb-12">
-          We are proud to collaborate with these amazing organizations to make a
-          difference.
+        <p className="text-lg p-4 sm:text-xl mb-12">
+          <Typewriter
+            words={[
+              " We are proud to collaborate with these amazing organizations to make a difference. ",
+            ]}
+            cursor
+            loop={true}
+            cursorStyle="_"
+            typeSpeed={70}
+            deleteSpeed={50}
+            delaySpeed={1000}
+          />
         </p>
 
         {/* Partner Organizations Grid */}
         <div className=" w-11/12 mx-auto grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-8">
           {partners.map((partner) => (
             <div
+              data-aos="zoom-in-up"
               key={partner.id}
               className="bg-white dark:bg-gray-800 p-6 rounded-3xl shadow-lg transform hover:scale-105 transition duration-300 ease-in-out"
             >

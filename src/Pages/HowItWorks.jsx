@@ -1,6 +1,13 @@
 import { Link } from "react-router-dom";
+import { Typewriter } from "react-simple-typewriter";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
 
 const HowItWorks = () => {
+  useEffect(() => {
+    AOS.init();
+  }, []);
   const steps = [
     {
       id: 1,
@@ -38,9 +45,20 @@ const HowItWorks = () => {
         <h2 className="text-3xl sm:text-4xl font-extrabold mb-8">
           How It Works
         </h2>
-        <p className="text-lg sm:text-xl mb-12">
-          It&apos;s simple! Follow these steps to start making a difference
-          today.
+        <p className="text-lg sm:text-xl p-3 mb-12">
+          <span className="text-white p-2">
+            <Typewriter
+              words={[
+                " It's simple! Follow these steps to start making a difference today. ",
+              ]}
+              cursor
+              loop={true}
+              cursorStyle="_"
+              typeSpeed={70}
+              deleteSpeed={50}
+              delaySpeed={1000}
+            />
+          </span>
         </p>
 
         {/* Steps Grid */}
@@ -48,6 +66,7 @@ const HowItWorks = () => {
           {steps.map((step) => (
             <div
               key={step.id}
+              data-aos="flip-down"
               className="bg-white dark:bg-gray-800 p-8 rounded-3xl shadow-lg transform hover:scale-105 transition duration-300 ease-in-out"
             >
               <div className="mb-4 text-blue-600 dark:text-blue-400">

@@ -1,19 +1,22 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { Helmet } from "react-helmet-async";
 import toast from "react-hot-toast";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import useAxiosSecure from "../Hooks/useAxious";
+import { AuthContext } from "../Provider/AuthProvider";
 
 const UpdateData = () => {
+  const useAxious = useAxiosSecure();
   const [newDeadline, setNewDeadline] = useState(new Date());
   const [post, setPost] = useState(null);
   const navigate = useNavigate();
   const { id } = useParams();
+  const { user } = useContext(AuthContext);
 
   const handleDateChange = (date) => {
     setNewDeadline(date);
@@ -25,12 +28,12 @@ const UpdateData = () => {
 
   const fetchData = async () => {
     try {
-      const { data } = await axios.get(
-        `${import.meta.env.VITE_API_URL}/update-data/${id}`
+      const { data } = await useAxious.get(
+        `/update-data/${id}?email=${user?.email}`
       );
       setPost(data);
     } catch (error) {
-      toast.error(error.message);
+      error && toast.error("Unauthorized Access");
     }
   };
 
@@ -71,10 +74,7 @@ const UpdateData = () => {
     };
 
     try {
-      await axios.put(
-        `${import.meta.env.VITE_API_URL}/update-data/${id}`,
-        updateData
-      );
+      await useAxious.put(`/update-data/${id}`, updateData);
       toast.success("Data Updated Successfully");
       navigate("/my-volunteer");
     } catch (error) {

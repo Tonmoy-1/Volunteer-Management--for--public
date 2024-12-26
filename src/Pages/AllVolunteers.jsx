@@ -6,6 +6,7 @@ import Spinner from "../Components/Spiner";
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
 import { Helmet } from "react-helmet-async";
+import { formatDate } from "date-fns";
 
 const AllVolunteers = () => {
   const [volunteers, setVolunteers] = useState([]);
@@ -121,8 +122,7 @@ const AllVolunteers = () => {
                       </span>
                     </td>
                     <td className="p-4 text-sm text-gray-600 dark:text-gray-400">
-                      <span className="font-medium">Deadline: </span>{" "}
-                      {volunteer.deadline}
+                      {formatDate(new Date(volunteer.deadline), "P")}
                     </td>
                     <td className="p-4">
                       <Link to={`/volunteer-details/${volunteer._id}`}>

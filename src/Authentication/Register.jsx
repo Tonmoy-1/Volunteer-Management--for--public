@@ -43,7 +43,9 @@ const Register = () => {
     try {
       await signInWithGoogle();
       toast.success("Registration Successful");
-      navigate("/");
+      setTimeout(() => {
+        navigate("/");
+      }, 2000);
     } catch (err) {
       err && setError("Something Wrong Try Again");
     }

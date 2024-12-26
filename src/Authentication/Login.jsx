@@ -29,7 +29,7 @@ const Login = () => {
   const handleGoogleLogin = async () => {
     try {
       await signInWithGoogle();
-      toast.success("Signin Successful");
+      toast.success("LogIn Successful");
       navigate(from, { replace: true });
     } catch (err) {
       setError(err.message);

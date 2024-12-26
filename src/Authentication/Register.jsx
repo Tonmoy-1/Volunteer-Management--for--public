@@ -35,16 +35,17 @@ const Register = () => {
       toast.success("Registration Successful");
       navigate("/");
     } catch (err) {
-      setError(err.message);
+      err && setError("Something Wrong Try Again");
     }
   };
 
   const handleGoogleLogin = async () => {
     try {
       await signInWithGoogle();
+      toast.success("Registration Successful");
       navigate("/");
     } catch (err) {
-      setError(err.message);
+      err && setError("Something Wrong Try Again");
     }
   };
 

@@ -64,8 +64,8 @@ const SuccessStories = () => {
   // from-green-500 via-teal-500 to-blue-500
 
   return (
-    <section className="bg-gradient-to-r py-16">
-      <div className="container mx-auto text-center text-white">
+    <section className="px-4 py-6 w-11/12 mx-auto">
+      <div className=" mx-auto text-center text-white">
         <h2 className="text-3xl px-2  md:text-4xl font-extrabold mb-6 sm:mb-8 tracking-wide text-gray-900 dark:text-gray-100">
           Making a Difference: Volunteer
           <span className="text-green-500">
@@ -86,7 +86,7 @@ const SuccessStories = () => {
         </p>
 
         {/* Success Stories Grid */}
-        <div className="w-11/12 mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        <div className="w-full mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {stories.map((story) => (
             <div
               key={story.id}

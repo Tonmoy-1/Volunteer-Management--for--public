@@ -5,10 +5,11 @@ import PartnerOrganizations from "./PartnerOrganizations";
 import SuccessStories from "./SuccessStories";
 import VolunteerNeed from "./VolunteerNeed";
 import FeaturedOpportunities from "../Components/FeaturedOpportunities";
+import UpcomingEvents from "../Components/UpcomingEvents";
 
 const Home = () => {
   return (
-    <div>
+    <div className="flex flex-col items-center justify-center gap-2">
       <Helmet>
         <title>Home Page || Volunteer Connect||</title>
         <link rel="canonical" href="https://www.tacobell.com/" />
@@ -19,6 +20,7 @@ const Home = () => {
       <HowItWorks></HowItWorks>
       <PartnerOrganizations></PartnerOrganizations>
       <FeaturedOpportunities></FeaturedOpportunities>
+      <UpcomingEvents></UpcomingEvents>
     </div>
   );
 };

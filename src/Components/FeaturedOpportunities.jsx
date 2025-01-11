@@ -29,7 +29,7 @@ const FeaturedOpportunities = () => {
   //   bg-gradient-to-r from-blue-500 via-teal-500 to-green-500
 
   return (
-    <div className="w-full mx-auto px-12 py-8 ">
+    <div className="px-4 py-6 w-11/12 mx-auto ">
       <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-8 text-gray-900 dark:text-gray-100">
         Featured Volunteer Opportunities
       </h2>

@@ -47,8 +47,8 @@ const PartnerOrganizations = () => {
   ];
   // bg-gradient-to-r from-green-500 via-teal-500 to-blue-500
   return (
-    <section className="py-16  text-white">
-      <div className="container mx-auto text-center">
+    <section className="px-4 py-6 w-11/12 mx-auto  text-white">
+      <div className=" mx-auto text-center">
         <h2 className="text-3xl sm:text-4xl text-gray-900 dark:text-gray-100 font-extrabold mb-8">
           Our Partner Organizations
         </h2>
@@ -67,7 +67,7 @@ const PartnerOrganizations = () => {
         </p>
 
         {/* Partner Organizations Grid */}
-        <div className=" w-11/12 mx-auto grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-8">
+        <div className=" w-full mx-auto grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-8">
           {partners.map((partner) => (
             <div
               data-aos="zoom-in-up"

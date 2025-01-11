@@ -40,8 +40,8 @@ const HowItWorks = () => {
   ];
   // bg-gradient-to-r from-blue-500 via-teal-500 to-green-500
   return (
-    <section className="py-16  text-white">
-      <div className="container mx-auto text-center">
+    <section className="px-4 py-6 w-11/12 mx-auto  text-white">
+      <div className=" mx-auto text-center">
         <h2 className="text-3xl sm:text-4xl font-extrabold mb-8 text-gray-900 dark:text-gray-100">
           How It Works
         </h2>
@@ -62,7 +62,7 @@ const HowItWorks = () => {
         </p>
 
         {/* Steps Grid */}
-        <div className=" w-11/12 mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className=" w-full mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {steps.map((step) => (
             <div
               key={step.id}

@@ -6,6 +6,7 @@ import SuccessStories from "./SuccessStories";
 import VolunteerNeed from "./VolunteerNeed";
 import FeaturedOpportunities from "../Components/FeaturedOpportunities";
 import UpcomingEvents from "../Components/UpcomingEvents";
+import Testimonials from "../Components/Testimonials";
 
 const Home = () => {
   return (
@@ -21,6 +22,7 @@ const Home = () => {
       <PartnerOrganizations></PartnerOrganizations>
       <FeaturedOpportunities></FeaturedOpportunities>
       <UpcomingEvents></UpcomingEvents>
+      <Testimonials></Testimonials>
     </div>
   );
 };

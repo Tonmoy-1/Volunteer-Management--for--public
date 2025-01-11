@@ -37,7 +37,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-[#1A2634] dark:bg-[#1A2634] text-white">
+    <nav className="sticky top-0 z-50 bg-[#1A2634] dark:bg-[#1A2634] text-white">
       <div className="container mx-auto px-10 py-4 flex justify-between items-center">
         {/* Logo Section */}
         <div className="text-2xl font-semibold">
@@ -79,7 +79,7 @@ const Navbar = () => {
                 </NavLink>
                 <button
                   onClick={logOut}
-                  className=" p-3 text-red-500 hover:bg-red-100 dark:hover:bg-red-800"
+                  className="p-3 text-red-500 hover:bg-red-100 dark:hover:bg-red-800"
                 >
                   Logout
                 </button>
@@ -107,7 +107,6 @@ const Navbar = () => {
               Login
             </NavLink>
           ) : (
-            // show just on hover and enter mouse
             <div
               className="relative group"
               onMouseEnter={handleMouseEnter}
@@ -129,7 +128,6 @@ const Navbar = () => {
                 )}
               </button>
 
-              {/* Dropdown Menu */}
               {isHovered && !isDropdownOpenMo && (
                 <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 shadow-lg rounded-lg z-50 hidden lg:block">
                   <p className="p-3 text-sm text-gray-700 dark:text-gray-300 border-b dark:border-gray-700">
@@ -144,7 +142,6 @@ const Navbar = () => {
                 </div>
               )}
 
-              {/* Full Dropdown Menu (opens on click) */}
               {isDropdownOpenMo && (
                 <div className="absolute right-[30%] mt-2 w-52 bg-white dark:bg-gray-800 shadow-lg rounded-lg z-50 md:hidden">
                   <p className="p-3 text-sm text-gray-700 dark:text-gray-300 border-b dark:border-gray-700">

@@ -45,14 +45,14 @@ const PartnerOrganizations = () => {
       link: "https://youtheducationfoundation.org",
     },
   ];
-
+  // bg-gradient-to-r from-green-500 via-teal-500 to-blue-500
   return (
-    <section className="py-16 bg-gradient-to-r from-green-500 via-teal-500 to-blue-500 text-white">
+    <section className="py-16  text-white">
       <div className="container mx-auto text-center">
-        <h2 className="text-3xl sm:text-4xl font-extrabold mb-8">
+        <h2 className="text-3xl sm:text-4xl text-gray-900 dark:text-gray-100 font-extrabold mb-8">
           Our Partner Organizations
         </h2>
-        <p className="text-lg p-4 sm:text-xl mb-12">
+        <p className="text-lg p-4 sm:text-xl mb-12 text-gray-900 dark:text-gray-100">
           <Typewriter
             words={[
               " We are proud to collaborate with these amazing organizations to make a difference. ",
@@ -87,16 +87,13 @@ const PartnerOrganizations = () => {
 
         {/* Call-to-Action */}
         <div className="mt-16">
-          <h2 className="text-3xl font-bold text-white mb-4">
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">
             Become a Partner
           </h2>
-          <p className="text-lg text-white mb-8">
+          <p className="text-lg text-gray-900 dark:text-gray-100 mb-8">
             Interested in collaborating? Join us in our mission to make a
             lasting impact.
           </p>
-          <a className="bg-blue-600 text-white py-3 px-8 rounded-full text-lg font-semibold hover:bg-blue-700 transition duration-300 ease-in-out">
-            Get in Touch
-          </a>
         </div>
       </div>
     </section>

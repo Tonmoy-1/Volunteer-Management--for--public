@@ -38,15 +38,15 @@ const HowItWorks = () => {
       icon: "M6 6l6 6 6-6",
     },
   ];
-
+  // bg-gradient-to-r from-blue-500 via-teal-500 to-green-500
   return (
-    <section className="py-16 bg-gradient-to-r from-blue-500 via-teal-500 to-green-500 text-white">
+    <section className="py-16  text-white">
       <div className="container mx-auto text-center">
-        <h2 className="text-3xl sm:text-4xl font-extrabold mb-8">
+        <h2 className="text-3xl sm:text-4xl font-extrabold mb-8 text-gray-900 dark:text-gray-100">
           How It Works
         </h2>
         <p className="text-lg sm:text-xl p-3 mb-12">
-          <span className="text-white p-2">
+          <span className="text-gray-900 dark:text-gray-100 p-2">
             <Typewriter
               words={[
                 " It's simple! Follow these steps to start making a difference today. ",
@@ -97,10 +97,10 @@ const HowItWorks = () => {
 
         {/* Call-to-Action */}
         <div className="mt-16">
-          <h2 className="text-3xl font-bold text-white mb-4">
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">
             Ready to Start?
           </h2>
-          <p className="text-lg text-white mb-8">
+          <p className="text-lg text-gray-900 dark:text-gray-100 mb-8">
             Join now and become part of a community dedicated to making the
             world a better place.
           </p>

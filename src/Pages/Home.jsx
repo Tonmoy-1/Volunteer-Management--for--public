@@ -4,6 +4,7 @@ import HowItWorks from "./HowItWorks";
 import PartnerOrganizations from "./PartnerOrganizations";
 import SuccessStories from "./SuccessStories";
 import VolunteerNeed from "./VolunteerNeed";
+import FeaturedOpportunities from "../Components/FeaturedOpportunities";
 
 const Home = () => {
   return (
@@ -17,6 +18,7 @@ const Home = () => {
       <SuccessStories></SuccessStories>
       <HowItWorks></HowItWorks>
       <PartnerOrganizations></PartnerOrganizations>
+      <FeaturedOpportunities></FeaturedOpportunities>
     </div>
   );
 };

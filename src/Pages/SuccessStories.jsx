@@ -61,10 +61,12 @@ const SuccessStories = () => {
     },
   ];
 
+  // from-green-500 via-teal-500 to-blue-500
+
   return (
-    <section className="bg-gradient-to-r from-indigo-500 via-purple-600 to-pink-600 py-16">
+    <section className="bg-gradient-to-r py-16">
       <div className="container mx-auto text-center text-white">
-        <h2 className="text-3xl px-2  md:text-4xl font-extrabold mb-6 sm:mb-8 tracking-wide">
+        <h2 className="text-3xl px-2  md:text-4xl font-extrabold mb-6 sm:mb-8 tracking-wide text-gray-900 dark:text-gray-100">
           Making a Difference: Volunteer
           <span className="text-green-500">
             <Typewriter
@@ -78,7 +80,7 @@ const SuccessStories = () => {
             />
           </span>
         </h2>
-        <p className="text-base sm:text-lg font-medium mb-8 sm:mb-10">
+        <p className="text-base sm:text-lg font-medium mb-8 sm:mb-10 text-gray-900 dark:text-gray-100">
           Read how individuals are transforming communities and inspiring
           change.
         </p>
@@ -89,7 +91,7 @@ const SuccessStories = () => {
             <div
               key={story.id}
               data-aos="flip-right"
-              className="bg-white dark:bg-gray-800 p-6 sm:p-8 rounded-3xl shadow-2xl transform hover:scale-105 transition duration-300 ease-in-out"
+              className="bg-white dark:bg-gray-800 p-2 sm:p-6 rounded-3xl shadow-2xl transform hover:scale-105 transition duration-300 ease-in-out"
             >
               <div className="overflow-hidden rounded-2xl mb-6">
                 <img
@@ -101,22 +103,22 @@ const SuccessStories = () => {
               <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-4">
                 {story.title}
               </h3>
-              <p className="text-sm sm:text-base text-gray-700 dark:text-gray-300 mb-4">
+              <p className="text-sm sm:text-base text-gray-700 dark:text-gray-300 ">
                 {story.description}
               </p>
-              <a className="text-blue-500 hover:text-blue-700 text-base sm:text-lg font-semibold transition duration-300 ease-in-out">
+              {/* <a className="text-blue-500 hover:text-blue-700 text-base sm:text-lg font-semibold transition duration-300 ease-in-out">
                 Read More →
-              </a>
+              </a> */}
             </div>
           ))}
         </div>
 
         {/* Call-to-Action Section */}
         <div className="mt-12 sm:mt-16">
-          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">
             Inspired? You Can Make a Difference Too!
           </h2>
-          <p className="text-base sm:text-lg text-white mb-8">
+          <p className="text-base sm:text-lg text-gray-900 dark:text-gray-100 mb-8">
             Join our community of volunteers and create your own success story.
             Your contribution matters!
           </p>

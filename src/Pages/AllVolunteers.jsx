@@ -13,6 +13,7 @@ const AllVolunteers = () => {
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(true);
   const [viewMode, setViewMode] = useState("card");
+  const [sortOrder, setSortOrder] = useState("new");
 
   useEffect(() => {
     const fetchVolunteers = async () => {
@@ -29,6 +30,13 @@ const AllVolunteers = () => {
     fetchVolunteers();
   }, [search]);
 
+  // Sort volunteers based on sortOrder
+  const sortedVolunteers = [...volunteers].sort((a, b) => {
+    const dateA = new Date(a.deadline);
+    const dateB = new Date(b.deadline);
+    return sortOrder === "new" ? dateB - dateA : dateA - dateB;
+  });
+
   return (
     <div className="max-w-6xl mx-auto p-8 bg-white dark:bg-gray-900">
       <Helmet>
@@ -39,14 +47,35 @@ const AllVolunteers = () => {
         Volunteer Opportunities
       </h1>
 
-      <div className="flex gap-5 justify-center mb-12 items-center">
+      <div className="flex gap-5 justify-between items-center mb-12">
+        {/* Search Input */}
         <input
           type="text"
           onChange={(e) => setSearch(e.target.value)}
           placeholder="Search by post title..."
           className="w-full max-w-2xl px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white dark:border-gray-600"
         />
-        {/* Toggle Button with Different Icons */}
+
+        {/* Sort Dropdown */}
+        <div>
+          <label
+            htmlFor="sort"
+            className="mr-2 text-sm font-medium text-gray-700 dark:text-gray-300"
+          >
+            Sort By:
+          </label>
+          <select
+            id="sort"
+            value={sortOrder}
+            onChange={(e) => setSortOrder(e.target.value)}
+            className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white dark:border-gray-600"
+          >
+            <option value="new">Newest</option>
+            <option value="old">Oldest</option>
+          </select>
+        </div>
+
+        {/* View Mode Toggle */}
         <div className="flex gap-4">
           <div onClick={() => setViewMode("card")}>
             <FaTable className="inline-block mr-2 md:text-4xl cursor-pointer" />
@@ -62,8 +91,8 @@ const AllVolunteers = () => {
       {/* Conditional Rendering based on View Mode */}
       {viewMode === "card" ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {volunteers.length > 0 ? (
-            volunteers.map((volunteer, index) => (
+          {sortedVolunteers.length > 0 ? (
+            sortedVolunteers.map((volunteer, index) => (
               <VolunteerCard key={index} singledata={volunteer} />
             ))
           ) : (
@@ -98,8 +127,8 @@ const AllVolunteers = () => {
               </tr>
             </thead>
             <tbody>
-              {volunteers.length > 0 ? (
-                volunteers.map((volunteer, index) => (
+              {sortedVolunteers.length > 0 ? (
+                sortedVolunteers.map((volunteer, index) => (
                   <tr key={index} className="bg-white dark:bg-gray-800">
                     <td className="p-4">
                       <img

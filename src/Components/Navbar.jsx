@@ -64,7 +64,7 @@ const Navbar = () => {
           >
             My Profile
             {isDropdownOpen && (
-              <div className="absolute right-[28%] mt-3 w-56 bg-white dark:bg-gray-800 shadow-lg rounded-lg z-50">
+              <div className="absolute right-[28%] mt-3 w-56 bg-white dark:bg-gray-800 shadow-lg rounded-lg z-50 py-2">
                 <NavLink
                   to="/add-volunteer"
                   className="block p-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700  border-gray-300 border-b-2"
@@ -77,12 +77,14 @@ const Navbar = () => {
                 >
                   Manage My Volunteer Posts
                 </NavLink>
-                <button
-                  onClick={logOut}
-                  className="p-3 text-red-500 hover:bg-red-100 dark:hover:bg-red-800"
-                >
-                  Logout
-                </button>
+                {user?.email && (
+                  <button
+                    onClick={logOut}
+                    className="p-3 text-red-500 hover:bg-red-100 dark:hover:bg-red-800"
+                  >
+                    Logout
+                  </button>
+                )}
               </div>
             )}
           </button>

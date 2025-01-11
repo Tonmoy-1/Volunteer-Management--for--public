@@ -7,6 +7,7 @@ import VolunteerNeed from "./VolunteerNeed";
 import FeaturedOpportunities from "../Components/FeaturedOpportunities";
 import UpcomingEvents from "../Components/UpcomingEvents";
 import Testimonials from "../Components/Testimonials";
+import CallToAction from "../Components/CallToAction";
 
 const Home = () => {
   return (
@@ -23,6 +24,7 @@ const Home = () => {
       <FeaturedOpportunities></FeaturedOpportunities>
       <UpcomingEvents></UpcomingEvents>
       <Testimonials></Testimonials>
+      <CallToAction></CallToAction>
     </div>
   );
 };
